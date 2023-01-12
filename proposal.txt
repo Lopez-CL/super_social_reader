@@ -1,0 +1,34 @@
+Name: Chris Lopez
+
+Stack: Python
+
+GitHub Repo: https://github.com/Lopez-CL/super_social_reader
+
+Wireframe link: https://drive.google.com/file/d/1r7OF1xbXXIVCOB8MnR2lM7pLLBLKOZQE/view?usp=sharing
+
+Project Name: Super Social Reader
+
+Project Description: At its core the web app will be a superhero comics reader tracker where users can create currently reading objects (with a set of attributes) to keep track of their reads and leave thoughts about books they’ve finished. Users will be able to see what other readers are doing/reading, with the ability to comment, on other users’ reads. The initial plan is to integrate this app with the superheroes index api, to help people new to the genre generate ideas about what characters to read.
+
+
+MVP (Minimum Viable Product) Features
+- All of CRUD* on a non-User table
+- CSS & JavaScript implemented
+- Data for creating "reads" validated upon create and edit, errors show
+- Login and Registration with validations
+
+Bonus Features:
+- Styled with Bootstrap
+- Will be publicly deployed
+- Application features a third-party API: SuperHero API (https://superheroapi.com/index.html)
+- Many-to-many relationships (comments)
+- AJAX
+
+
+
+
+
+
+
+
+https://drive.google.com/file/d/1r7OF1xbXXIVCOB8MnR2lM7pLLBLKOZQE/view?usp=sharing
