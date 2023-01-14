@@ -1,18 +1,30 @@
 * {
     margin: 0;
     padding: 0;
-    transition:5ms;
+    transition: 5ms;
 }
 
-nav{
+nav {
     height: 100px;
-    background-color: gold;
-    border: 1 1 black;
+    background-image:linear-gradient(to right, gold, white, gold);
+    border: 5px solid black;
 }
 
-form{
+form {
+    padding: 1rem;
+    border: solid black 6px;
+}
+main{
+    background-color: white;
     padding: 1rem;
 }
-body{
-    background-image: url(/flask_app/static/assets/DALL·E\ 2022-09-18\ 09.09.33\ -\ half\ a\ grapefruit\ on\ a\ bright\ graphic\ background\ of\ daisies\ .png) !important;
+
+.super-profile{
+    background-image: url('../static/assets/super_profile.jpeg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+/* .login, .registration{
+    
+} */
