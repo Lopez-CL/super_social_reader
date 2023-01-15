@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `super_social_reader`.`comics` (
   `artist` VARCHAR(255) NULL,
   `colorist` VARCHAR(255) NULL,
   `letterer` VARCHAR(255) NULL,
+  `rating` INT NULL,
   `thoughts` TEXT NULL,
   `crated_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
