@@ -14,17 +14,32 @@ form {
     padding: 1rem;
     border: solid black 6px;
 }
-main{
+.login-registration{
     background-color: white;
     padding: 1rem;
 }
+/* .dashboard{
+} */
 
 .super-profile{
     background-image: url('../static/assets/super_profile.jpeg') !important;
     background-repeat: no-repeat;
     background-size: cover;
 }
+.super-background{
+    background-image: url('../static/assets/realistic.png') !important;
+    background-repeat: repeat;
+    background-size: cover;
+    background-position:center;
+}
 
 /* .login, .registration{
     
 } */
+
+.reading-list{
+    overflow: scroll;
+    height: 300px;
+    width: max-content;
+    background-color: aliceblue;
+}
