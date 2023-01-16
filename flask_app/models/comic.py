@@ -8,7 +8,6 @@ db_name = 'super_social_reader'
 class Comic:
     def __init__(self, data):
         self.id = data['id']
-        self.user_id = data['user_id']
         self.author = data['author']
         self.artist = data['artist']
         self.colorist = data['colorist']
@@ -17,6 +16,7 @@ class Comic:
         self.thought = data['thought']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.user = None
 
 # CRUD Class methods
 
@@ -27,6 +27,8 @@ class Comic:
         VALUES (%(user_id)s,%(title)s,%(author)s,%(artist)s,%(colorist)s,%(letterer)s,%(status)s,%(rating)s,%(thought)s);"""
         print('Creating comic!')
         return connectToMySQL(db_name).query_db(query, data)
+
+#Grabbing Class Methods
 
 
 # Static Validations
