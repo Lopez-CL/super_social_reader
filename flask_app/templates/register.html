@@ -22,6 +22,15 @@
     </nav>
     <main>
         <h2 class="text-start ms-4 py-2">Superhero Registration</h2>
+        {% with messages = get_flashed_messages(category_filter = ['register']) %}
+            {% if messages %}
+            <div class="alert alert-warning">
+                {% for message in messages %}
+                <p class="text-danger">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
         <form action="/register" method="post">
             <div class="d-flex mt-1">
                 <label class="form-label" for="username">Username:</label>
