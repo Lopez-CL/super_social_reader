@@ -8,6 +8,7 @@ db_name = 'super_social_reader'
 class Comic:
     def __init__(self, data):
         self.id = data['id']
+        self.title = data['title']
         self.author = data['author']
         self.artist = data['artist']
         self.colorist = data['colorist']
@@ -45,17 +46,18 @@ class Comic:
             for this_comic_dictionary in results:
                 this_comic_obj = cls(this_comic_dictionary)
                 this_user_dictionary = {
-                    'id': this_comic_dictionary['user.id'],
+                    'id': this_comic_dictionary['users.id'],
                     'username': this_comic_dictionary['username'],
                     'email': this_comic_dictionary['email'],
                     'password': this_comic_dictionary['password'],
-                    'created_at': this_comic_dictionary['user.created_at'],
-                    'updated_at': this_comic_dictionary['user.updated_at']
+                    'created_at': this_comic_dictionary['users.created_at'],
+                    'updated_at': this_comic_dictionary['users.updated_at']
                 }
                 this_user_obj = user.User(this_user_dictionary)
                 this_comic_obj.user = this_user_obj
                 all_comics.append(this_comic_obj)
             print(all_comics)
+            print(all_comics[0].user.id)
             return all_comics
 
     @classmethod
@@ -63,27 +65,29 @@ class Comic:
         query = """SELECT * from comics
         LEFT JOIN users
         ON comics.user_id = users.id
-        WHERE users.id = %(id)s AND comics.status = "reading";;"""
+        WHERE users.id = %(id)s AND comics.status = 'reading';"""
         results = connectToMySQL(db_name).query_db(query,data)
         all_users_comics = []
         if len(results) == 0:
             print("Had trouble getting the user comics...")
             return []
         else:
+            print(results)
             for this_comic_dictionary in results:
                 this_comic_obj = cls(this_comic_dictionary)
+                print(this_comic_obj)
                 this_user_dictionary = {
-                    'id': this_comic_dictionary['user.id'],
+                    'id': this_comic_dictionary['users.id'],
                     'username': this_comic_dictionary['username'],
                     'email': this_comic_dictionary['email'],
                     'password': this_comic_dictionary['password'],
-                    'created_at': this_comic_dictionary['user.created_at'],
-                    'updated_at': this_comic_dictionary['user.updated_at']
+                    'created_at': this_comic_dictionary['users.created_at'],
+                    'updated_at': this_comic_dictionary['users.updated_at']
                 }
                 this_user_obj = user.User(this_user_dictionary)
                 this_comic_obj.user = this_user_obj
                 all_users_comics.append(this_comic_obj)
-            print(all_users_comics)
+            print(all_users_comics[0].title)
             return all_users_comics
 
 

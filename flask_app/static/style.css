@@ -43,3 +43,9 @@ form {
     width: max-content;
     background-color: aliceblue;
 }
+
+.current-user-comics{
+    width: fit-content;
+    height: 25px;
+    overflow: scroll;
+}

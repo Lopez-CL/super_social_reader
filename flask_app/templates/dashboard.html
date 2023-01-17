@@ -26,11 +26,12 @@
     </nav>
     <main class="d-flex justify-content-around dashboard align-items-center ">
         <div class="reading-list d-flex flex-column justify-content-between p-4 border border-dark border-3">
-            {% for this_comic in user_ %}
-                {% if this_comic.user_id != this_user.id %}
-                    {% if this_comic.status == 'reading' %}
-                    <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
-                    </article>
+            {% for this_comic in all_comics %}
+                {% if this_comic.user.id != this_user.id %}
+                    {% if this_comic.status == reading %}
+                    <div class="current-reads my-2 bg-warning border border-2 border-dark">
+                        <p>{{ this_comic.user.username }} is currently reading <a href="/{{this_comic.user.username}}/{{this_comic.user.id}}/comics">{{this_comic.title}}</a></p>
+                    </div>
                     {% endif %}
                 {% endif %}
             {% endfor %}
@@ -46,18 +47,13 @@
             </article>
             <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
             </article>
-
         </div>
         <div class="user-info d-flex flex-column">
             <article class="user-avatar">
-                <div class="bg-white">
+                <div class="bg-white d-flex flex-column current-user-comics p-1">
                     <!-- I wonder if I could make background of this div a thought bubble? Avoid the arbitrary positioning? -->
-                    {% for this_user_comic in all_user_comics %}
-                        {% if this_user_comic.user_id != this_user.id %}
-                            {% if this_user_comic.status == 'reading' %}
-                                <a class="" href="">{{this_user_comic.title}}</a>
-                            {% endif %}
-                        {% endif %}
+                    {% for this_user_comic in all_users_comics %}
+                        <a class="" href="{{/this_user.username}}/{{this_user.id}}/{{ this_user_comic.title}}/{{this_user_comic.id}}">{{this_user_comic.title}}</a>
                     {% endfor %}
                 </div>
                 <img src="../static/assets/avatar-placeholder.png" alt="user" srcset="">

@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `super_social_reader`.`comics` (
   `status` VARCHAR(255) NULL,
   `rating` INT NULL,
   `thought` TEXT NULL,
-  `crated_at` DATETIME NULL DEFAULT NOW(),
+  `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
   PRIMARY KEY (`id`),
   INDEX `fk_comics_users_idx` (`user_id` ASC) VISIBLE,
