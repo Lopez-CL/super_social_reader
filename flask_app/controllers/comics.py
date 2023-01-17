@@ -12,7 +12,7 @@ def render_dash():
         data = {
             'id': session['user_id']
         }
-        return render_template('dashboard.html', this_user = user.User.get_user_by_id(data))
+        return render_template('dashboard.html', this_user = user.User.get_user_by_id(data), all_user_comics = comic.Comic.get_all_session_user_comics(), all_comics = comic.Comic.get_all_comics_with_users())
 
 @app.route('/add/comic')
 def render_add_comic_page():

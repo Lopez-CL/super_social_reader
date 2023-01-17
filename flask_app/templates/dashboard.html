@@ -26,10 +26,14 @@
     </nav>
     <main class="d-flex justify-content-around dashboard align-items-center ">
         <div class="reading-list d-flex flex-column justify-content-between p-4 border border-dark border-3">
-            <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
-            </article>
-            <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
-            </article>
+            {% for this_comic in user_ %}
+                {% if this_comic.user_id != this_user.id %}
+                    {% if this_comic.status == 'reading' %}
+                    <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
+                    </article>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
             <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
             </article>
             <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
@@ -46,9 +50,15 @@
         </div>
         <div class="user-info d-flex flex-column">
             <article class="user-avatar">
-                <div>
+                <div class="bg-white">
                     <!-- I wonder if I could make background of this div a thought bubble? Avoid the arbitrary positioning? -->
-                    <a class="" href="">Current Comic</a>
+                    {% for this_user_comic in all_user_comics %}
+                        {% if this_user_comic.user_id != this_user.id %}
+                            {% if this_user_comic.status == 'reading' %}
+                                <a class="" href="">{{this_user_comic.title}}</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <img src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
                 <div class=" d-flex border border-2 border-dark reading-routes">
