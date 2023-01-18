@@ -25,28 +25,17 @@
         </div>
     </nav>
     <main class="d-flex justify-content-around dashboard align-items-center ">
-        <div class="reading-list d-flex flex-column justify-content-between p-4 border border-dark border-3">
+        <div class="reading-list d-flex flex-column p-2 border border-dark border-3">
+            <h2>Reader Radar</h2>
             {% for this_comic in all_comics %}
                 {% if this_comic.user.id != this_user.id %}
-                    {% if this_comic.status == reading %}
-                    <div class="current-reads my-2 bg-warning border border-2 border-dark">
+                    {% if this_comic.status == 'reading' %}
+                    <div class="bg-warning border border-2 border-dark">
                         <p>{{ this_comic.user.username }} is currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
                     </div>
                     {% endif %}
                 {% endif %}
             {% endfor %}
-            <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
-            </article>
-            <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
-            </article>
-            <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
-            </article>
-            <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
-            </article>
-            <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
-            </article>
-            <article class="current-reads my-2 bg-warning border border-2 border-dark">Content
-            </article>
         </div>
         <div class="user-info d-flex flex-column">
             <article class="user-avatar">
