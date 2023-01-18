@@ -88,3 +88,14 @@ def update_comic(id):
         }
         comic.Comic.update_comic(data)
         return redirect(f'/comic/{id}')
+
+@app.route('/delete/comic/<int:id>')
+def delete_comic(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    else:
+        data = {
+            'id': id
+        }
+        comic.Comic.delete(data)
+        return redirect('/dashboard')

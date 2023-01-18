@@ -45,6 +45,11 @@ class Comic:
         """
         return connectToMySQL(db_name).query_db(query,data)
 
+    @classmethod
+    def delete(cls,data):
+        query = "DELETE FROM comics WHERE id = %(id)s;"
+        return connectToMySQL(db_name).query_db(query, data)
+
 # Grabbing Class Methods
 
     @classmethod

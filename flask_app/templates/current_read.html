@@ -31,7 +31,7 @@
                 <h4>Letterer(s):{{ this_comic.letterer }}</h4>
                 {% if this_comic.user.id == this_user.id %}
                     <a class="btn btn-success" href="/update/comic/{{this_comic.id}}">Update Comic</a>
-                    <a class="btn btn-danger" href="">Delete Comic</a>
+                    <a class="btn btn-danger" href="/delete/comic/{{this_comic.id}}">Delete Comic</a>
                 {% endif %}
             </div>
             <div class="bg-warning d-flex">
