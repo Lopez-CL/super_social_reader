@@ -1,8 +1,9 @@
 from flask_app import app
-from flask_app.models import comic,user, comment
+from flask_app.models import comic, user, comment
 from flask import request, redirect, session, render_template
 
 # Page Renders
+
 @app.route('/dashboard')
 def render_dash():
     if 'user_id' not in session:
@@ -12,7 +13,8 @@ def render_dash():
         data = {
             'id': session['user_id']
         }
-        return render_template('dashboard.html', this_user = user.User.get_user_by_id(data), all_users_comics = comic.Comic.get_all_session_user_comics(data), all_comics = comic.Comic.get_all_comics_with_users())
+        return render_template('dashboard.html', this_user=user.User.get_user_by_id(data), all_users_comics=comic.Comic.get_all_session_user_comics(data), all_comics=comic.Comic.get_all_comics_with_users())
+
 
 @app.route('/add/comic')
 def render_add_comic_page():
@@ -21,7 +23,33 @@ def render_add_comic_page():
     else:
         return render_template('add_comic.html')
 
-#CRUD Logic
+
+@app.route('/comic/<int:id>')
+def render_comic_detail(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    else:
+        data = {
+            'id': id
+        }
+        user_data = {
+            'id': session['user_id']
+        }
+        return render_template('current_read.html', this_user = user.User.get_user_by_id(user_data), this_comic = comic.Comic.grab_comic_by_id_with_user(data))
+
+@app.route('/update/comic/<int:id>')
+def render_update_comic_page(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    else:
+        data = {
+            'id': id
+        }
+        return render_template('update_comic.html', this_comic = comic.Comic.grab_comic_by_id(data))
+
+
+# CUD Logic
+
 
 @app.route('/create/comic', methods=['post'])
 def add_comic():
@@ -42,3 +70,21 @@ def add_comic():
         comic.Comic.save(data)
         return redirect('/dashboard')
 
+@app.route("/update/<int:id>", methods=['post'])
+def update_comic(id):
+    if not comic.Comic.val_comic(request.form):
+        return redirect(f'/update/comic/{id}')
+    else:
+        data = {
+            'title': request.form['title'],
+            'author': request.form['author'],
+            'artist': request.form['artist'],
+            'colorist': request.form['colorist'],
+            'letterer': request.form['letterer'],
+            'status': request.form['status'],
+            'rating':request.form['rating'],
+            'thought': request.form['thought'],
+            'id': [id]
+        }
+        comic.Comic.update_comic(data)
+        return redirect(f'/comic/{id}')

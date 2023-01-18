@@ -49,3 +49,7 @@ form {
     height: 25px;
     overflow: scroll;
 }
+
+.comic-details{
+    width: min-content;
+}

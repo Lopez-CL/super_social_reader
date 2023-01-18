@@ -30,7 +30,7 @@
                 {% if this_comic.user.id != this_user.id %}
                     {% if this_comic.status == reading %}
                     <div class="current-reads my-2 bg-warning border border-2 border-dark">
-                        <p>{{ this_comic.user.username }} is currently reading <a href="/{{this_comic.user.username}}/{{this_comic.user.id}}/comics">{{this_comic.title}}</a></p>
+                        <p>{{ this_comic.user.username }} is currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
                     </div>
                     {% endif %}
                 {% endif %}
@@ -53,7 +53,7 @@
                 <div class="bg-white d-flex flex-column current-user-comics p-1">
                     <!-- I wonder if I could make background of this div a thought bubble? Avoid the arbitrary positioning? -->
                     {% for this_user_comic in all_users_comics %}
-                        <a class="" href="{{/this_user.username}}/{{this_user.id}}/{{ this_user_comic.title}}/{{this_user_comic.id}}">{{this_user_comic.title}}</a>
+                        <a class="" href="/comic/{{this_user_comic.id}}">{{this_user_comic.title}}</a>
                     {% endfor %}
                 </div>
                 <img src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
