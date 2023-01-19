@@ -34,9 +34,42 @@
                     <a class="btn btn-danger" href="/delete/comic/{{this_comic.id}}">Delete Comic</a>
                 {% endif %}
             </div>
-            <div class="bg-warning d-flex">
-                <h1 class="bg-warning">Comments!</h1>
-            </div>
+            <div>
+                <div>
+                {% with messages = get_flashed_messages(category_filter = ['comment']) %}
+                    {% if messages %}
+                    <div class="alert alert-warning">
+                        {% for message in messages %}
+                        <p class="text-danger">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+                <div class="bg-warning">
+                        <form action="/comment/{{this_comic.id}}" method="post">
+                            <label class="form-label" for="content"><h2>Discussion on comic</h2></label>
+                            {% if all_comments == 0 %}
+                            <div class="bg-warning border border-4 border-dark my-4 p-3" id="comics-discussion">
+                            </div>
+                            {% else %}
+                            <div class="bg-white border border-4 border-dark my-4 p-3" id="comics-discussion">
+                                {% for this_comment in all_comments %}
+                                    {% if this_comment.sender.id == this_user.id %}
+                                        <p class="text-primary"><strong>{{ this_comment.sender.username }}:</strong> {{ this_comment.content }}</p>
+                                    {% else %}
+                                        <p class="text-dark"><strong>{{ this_comment.sender.username }}:</strong> {{ this_comment.content }}</p>
+                                    {% endif  %}
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                            <textarea placeholder="Dialogue with reader about comic!" class="form-control" name="content" id="content" cols="50" rows="5"></textarea>
+                            <div class="d-flex justify-content-end">
+                                <input class=" btn btn-primary  mt-2" type="submit" value="Comment">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
         </main>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>

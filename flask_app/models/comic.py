@@ -8,6 +8,7 @@ db_name = 'super_social_reader'
 class Comic:
     def __init__(self, data):
         self.id = data['id']
+        self.user_id = data['user_id']
         self.title = data['title']
         self.author = data['author']
         self.artist = data['artist']
@@ -78,7 +79,6 @@ class Comic:
                 this_comic_obj.user = this_user_obj
                 all_comics.append(this_comic_obj)
             print(all_comics)
-            print(all_comics[0].user.id)
             return all_comics
 
     @classmethod
@@ -128,7 +128,6 @@ class Comic:
         ON comics.user_id = users.id
         WHERE comics.id = %(id)s;"""
         result = connectToMySQL(db_name).query_db(query, data)
-        print('had trouble getting comic...')
         print('found and getting comic!')
         print(result)
         for this_comic_dictionary in result:

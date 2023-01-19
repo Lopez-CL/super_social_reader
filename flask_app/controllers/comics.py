@@ -35,7 +35,7 @@ def render_comic_detail(id):
         user_data = {
             'id': session['user_id']
         }
-        return render_template('current_read.html', this_user = user.User.get_user_by_id(user_data), this_comic = comic.Comic.grab_comic_by_id_with_user(data))
+        return render_template('current_read.html', this_user = user.User.get_user_by_id(user_data), this_comic = comic.Comic.grab_comic_by_id_with_user(data), all_comments = comment.Comment.get_comments_by_comic_id(data) )
 
 @app.route('/update/comic/<int:id>')
 def render_update_comic_page(id):
