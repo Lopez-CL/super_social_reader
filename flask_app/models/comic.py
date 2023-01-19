@@ -82,7 +82,7 @@ class Comic:
             return all_comics
 
     @classmethod
-    def get_all_session_user_comics(cls, data):
+    def get_all_session_user_current_comics(cls, data):
         query = """SELECT * from comics
         LEFT JOIN users
         ON comics.user_id = users.id

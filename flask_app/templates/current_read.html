@@ -21,8 +21,8 @@
             </div>
         </nav>
         <main class="d-flex d-flex justify-content-around align-items-center dashboard align-items-center ">
-            <div class="bg-warning d-flex flex-column border border-dark border-2 p-2 mt-5 comic-details">
-                <img src="../static/assets/comic_detail.png" alt="an open comic book icon">
+            <div class="bg-warning d-flex flex-column border border-dark border-1 p-2 mt-5 comic-details">
+                <img src="{{ url_for('static', filename='comic_detail.png') }}" alt="an open comic book icon">
                 <h2>Artist: {{ this_comic.title }}</h2>
                 <h3>Reading Status: {{this_comic.status}}</h3>
                 <h4> Author(s): {{ this_comic.author }}</h4>

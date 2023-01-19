@@ -53,3 +53,11 @@ form {
 .comic-details{
     width: min-content;
 }
+
+.past-reads{
+    overflow: scroll;
+    height: 50%;
+}
+.flex-item{
+    flex: 1fr;
+}

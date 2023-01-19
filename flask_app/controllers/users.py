@@ -15,6 +15,19 @@ def index():
 def register():
     return render_template('register.html')
 
+@app.route('/user/<int:id>/past/comics')
+def render_past_comics(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    else:
+        user_data = {
+            'id': session['user_id']
+        }
+        data = {
+            'id': id
+        }
+        return render_template('past_reads.html', this_user=user.User.get_user_by_id(user_data), this_users_reads = user.User.get_user_with_comics(data))
+
 # User Logic (login + registration)
 
 

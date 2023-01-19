@@ -31,7 +31,7 @@
                 {% if this_comic.user.id != this_user.id %}
                     {% if this_comic.status == 'reading' %}
                     <div class="bg-warning border border-2 border-dark">
-                        <p>{{ this_comic.user.username }} is currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
+                        <p><a href="/user/{{this_comic.user.id}}/past/comics">{{ this_comic.user.username }}</a> is currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
                     </div>
                     {% endif %}
                 {% endif %}
@@ -41,14 +41,19 @@
             <article class="user-avatar">
                 <div class="bg-white d-flex flex-column current-user-comics p-1">
                     <!-- I wonder if I could make background of this div a thought bubble? Avoid the arbitrary positioning? -->
-                    {% for this_user_comic in all_users_comics %}
-                        <a class="" href="/comic/{{this_user_comic.id}}">{{this_user_comic.title}}</a>
-                    {% endfor %}
+                    {% if all_users_comics == None %}
+                        <p>Not reading anything yet!</p>
+                    {% else %}
+                        {% for this_user_comic in all_users_comics %}
+                            <a class="" href="/comic/{{this_user_comic.id}}">{{this_user_comic.title}}</a>
+                        {% endfor %}
+                    {% endif %}
+                    
                 </div>
                 <img src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
                 <div class=" d-flex border border-2 border-dark reading-routes">
                     <div class="bg-warning">
-                        <a href="/{{this_user.username}}/{{this_user.id}}/comics"> <i class="bi bi-bookshelf"></i> Past
+                        <a href="/user/{{this_user.id}}/past/comics"> <i class="bi bi-bookshelf"></i> Past
                             Comics</a>
                         <a href="/add/comic"> <i class="bi bi-bookmark-plus"></i>Add a comic</a>
                     </div>

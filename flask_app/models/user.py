@@ -49,6 +49,36 @@ class User:
         else:
             print('found and getting user...')
             return cls(result[0])
+    @classmethod
+    def get_user_with_comics(cls,data):
+        query = """SELECT * FROM users
+        LEFT JOIN comics
+        ON users.id = comics.user_id
+        WHERE users.id = %(id)s;"""
+        results = connectToMySQL(db_name).query_db(query,data)
+        if len(results) == 0:
+            print('Had trouble getting user...')
+            return None
+        else:
+            print(results)
+            user_obj = cls(results[0])
+            for dictionary in results:
+                comic_data = { 
+                    'id': dictionary['comics.id'],
+                    'user_id': dictionary['user_id'],
+                    'title': dictionary['title'],
+                    'author': dictionary['author'],
+                    'artist': dictionary['artist'],
+                    'colorist': dictionary['colorist'],
+                    'letterer': dictionary['letterer'],
+                    'status': dictionary['status'],
+                    'rating': dictionary['rating'],
+                    'thought': dictionary['thought'],
+                    'created_at': dictionary['comics.created_at'],
+                    'updated_at': dictionary['comics.updated_at']
+                }
+                user_obj.comics.append(comic.Comic(comic_data))
+            return user_obj
 
     # Static Methods
     @staticmethod
