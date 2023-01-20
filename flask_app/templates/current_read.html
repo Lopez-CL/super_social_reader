@@ -45,12 +45,10 @@
                     </div>
                     {% endif %}
                 {% endwith %}
-                <div class="bg-warning">
-                        <form action="/comment/{{this_comic.id}}" method="post">
-                            <label class="form-label" for="content"><h2>Discussion on comic</h2></label>
-                            {% if all_comments == 0 %}
-                            <div class="bg-warning border border-4 border-dark my-4 p-3" id="comics-discussion">
-                            </div>
+                <div class="bg-warning  comics-discussion ">
+                    <h2>Discussion on comic</h2>
+                    {% if all_comments | length == 0 %}
+                                <p>No comments in yet!</p>
                             {% else %}
                             <div class="bg-white border border-4 border-dark my-4 p-3" id="comics-discussion">
                                 {% for this_comment in all_comments %}
@@ -62,6 +60,8 @@
                                 {% endfor %}
                             {% endif %}
                             </div>
+                        <form class="bg-warning" action="/comment/{{this_comic.id}}" method="post">
+                            <label class="form-label" for="content"><h2>Discussion on comic</h2></label>
                             <textarea placeholder="Dialogue with reader about comic!" class="form-control" name="content" id="content" cols="50" rows="5"></textarea>
                             <div class="d-flex justify-content-end">
                                 <input class=" btn btn-primary  mt-2" type="submit" value="Comment">

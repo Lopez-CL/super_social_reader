@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `super_social_reader`.`comments` (
   CONSTRAINT `fk_comments_comics1`
     FOREIGN KEY (`comic_id`)
     REFERENCES `super_social_reader`.`comics` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
