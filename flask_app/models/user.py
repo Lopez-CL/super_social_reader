@@ -19,18 +19,25 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.file_name = data['file_name']
         self.comics = []
         self.comments = []
 
-    # CRUD class methods
+    # CRU class methods
     @classmethod
     def create_user(cls, data):
         query = """INSERT INTO users
         (username, email, password)
         VALUES (%(username)s,%(email)s,%(password)s);"""
         return connectToMySQL(db_name).query_db(query, data)
+    @classmethod
+    def update_user_photo(cls,data):
+        query = """UPDATE users SET
+        file_name = %(file_name)s
+        WHERE id = %(id)s;
+        """
+        return connectToMySQL(db_name).query_db(query,data);
     # Grabbing class methods
-
     @classmethod
     def get_user_by_id(cls, data):
         query = 'SELECT * FROM users WHERE id = %(id)s;'

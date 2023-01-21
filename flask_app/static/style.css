@@ -33,6 +33,12 @@ form {
     background-position:center;
 }
 
+.avatar-image{
+    border-radius: 100%;
+    height: 175px;
+    width: 175px;
+}
+
 /* .login, .registration{
     
 } */

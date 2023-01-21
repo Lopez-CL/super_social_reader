@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `super_social_reader`.`users` (
   `password` VARCHAR(255) NULL,
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
+  `file_name` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
