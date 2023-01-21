@@ -85,7 +85,7 @@ def update_comic(id):
             'status': request.form['status'],
             'rating':request.form['rating'],
             'thought': request.form['thought'],
-            'id': [id]
+            'id': id
         }
         comic.Comic.update_comic(data)
         return redirect(f'/comic/{id}')

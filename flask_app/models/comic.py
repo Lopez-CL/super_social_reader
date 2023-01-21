@@ -73,7 +73,8 @@ class Comic:
                     'email': this_comic_dictionary['email'],
                     'password': this_comic_dictionary['password'],
                     'created_at': this_comic_dictionary['users.created_at'],
-                    'updated_at': this_comic_dictionary['users.updated_at']
+                    'updated_at': this_comic_dictionary['users.updated_at'],
+                    'file_name': this_comic_dictionary['file_name']
                 }
                 this_user_obj = user.User(this_user_dictionary)
                 this_comic_obj.user = this_user_obj
@@ -103,7 +104,8 @@ class Comic:
                     'email': this_comic_dictionary['email'],
                     'password': this_comic_dictionary['password'],
                     'created_at': this_comic_dictionary['users.created_at'],
-                    'updated_at': this_comic_dictionary['users.updated_at']
+                    'updated_at': this_comic_dictionary['users.updated_at'],
+                    'file_name': this_comic_dictionary['file_name']
                 }
                 this_user_obj = user.User(this_user_dictionary)
                 this_comic_obj.user = this_user_obj
@@ -139,7 +141,8 @@ class Comic:
                 'email': this_comic_dictionary['email'],
                 'password': this_comic_dictionary['password'],
                 'created_at': this_comic_dictionary['users.created_at'],
-                'updated_at': this_comic_dictionary['users.updated_at']
+                'updated_at': this_comic_dictionary['users.updated_at'],
+                'file_name': this_comic_dictionary['file_name']
             }
             this_user_obj = user.User(this_user_dictionary)
             this_comic_obj.user = this_user_obj

@@ -37,7 +37,8 @@ class Comment():
                 'email': dictionary['email'],
                 'password': dictionary['password'],
                 'created_at': dictionary['sender.created_at'],
-                'updated_at': dictionary['sender.updated_at']
+                'updated_at': dictionary['sender.updated_at'],
+                'file_name': dictionary['file_name']
             }
             this_sender_obj = user.User(this_sender_dictionary)
             this_comment_obj.sender = (this_sender_obj)
