@@ -1,28 +1,55 @@
+@keyframes page-fades{
+    from {opacity: 0;}
+    to {opacity: 1;}
+
+}
+
 * {
     margin: 0;
     padding: 0;
-    transition: 5ms;
+}
+body{
+    animation-name: page-fades;
+    animation-duration: 1.5s;
+}
+a{
+    text-decoration: none !important;
 }
 
 nav {
     height: 100px;
     background-image:linear-gradient(to right, gold, white, gold);
     border: 5px solid black;
+    box-shadow: 8px 8px 1px black;
 }
-
+/* The class of login-reg Main elements */
+.login-registration{
+    padding: 1rem;
+    margin-top: 50px;
+}
 form {
     padding: 1rem;
-    border: solid black 2px;
+    border: solid black 3px;
 }
-.login-registration{
-    background-color: white;
+form.user-form {
     padding: 1rem;
+    border: 10px solid black;
+    background-color: white;
 }
+input.form-control{
+    width: max-content;
+}
+
 /* .dashboard{
 } */
 
-.super-profile{
-    background-image: url('../static/assets/super_profile.jpeg') !important;
+.super-login{
+    background-image: url('../static/assets/login.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.super-register{
+    background-image: url('../static/assets/registration.jpg') !important;
     background-repeat: no-repeat;
     background-size: cover;
 }
