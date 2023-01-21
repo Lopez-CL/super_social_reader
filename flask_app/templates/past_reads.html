@@ -23,7 +23,7 @@
     </nav>
     <main class=" d-flex flex-wrap bg-white me-5">
         {% for this_comic in this_users_reads.comics %}
-        {% if this_comic.status != 'reading' %}
+        {% if this_comic.status == 'finished' %}
         <div class="d-flex flex-column text-wrap p-1 justify-content-center past-reads">
             <div class="flex-item">
                 <img src="{{ url_for('static', filename='comic_detail.png') }}" alt="an open comic book icon">
