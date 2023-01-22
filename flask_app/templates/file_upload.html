@@ -11,11 +11,12 @@
             integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
     
-    <body class="mx-auto col-8 super-profile">
+    <body class="mx-auto col-8 edit-image">
     
         <nav class="my-3">
             <div class="text-end me-2">
-                <a href="/registration">Not Registered?</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
             </div>
     
             <div class="ms-2 text-center">
@@ -23,7 +24,6 @@
             </div>
         </nav>
         <main class="login-registration">
-            <h2 class="text-start ms-4 py-2">Change Profile Picture</h2>
             <!-- {% with messages = get_flashed_messages(category_filter = ['login']) %}
                 {% if messages %}
                 <div class="alert alert-warning">
@@ -42,9 +42,10 @@
                     </div>
                 {% endif %}
             {% endwith %}
-            <form action="/upload/image" method="post" enctype="multipart/form-data">
+            <form action="/upload/image" method="post" enctype="multipart/form-data" class="bg-warning comic-form">
+                <h2 class="text-start ms-4 py-2">Change Profile Picture</h2>
                 <div class="d-flex my-3">
-                    <label class="form-label" for="file">Image: </label>
+                    <label class="form-label mx-2" for="file">Image: </label>
                     <input class="form-control" name="file" id="file" type="file">
                 </div>
                 <div class="d-flex my-1 justify-content-end">

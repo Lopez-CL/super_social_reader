@@ -1,42 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Super Social Reader</title>
-        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='comics.png') }}"/>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    </head>
-    <body class="mx-auto col-8 super-profile p-2">
-        <nav class="my-3">
-            <div class="text-end me-2">
-                <a href="/dashboard">Dashboard</a>
-                <a href="/logout">Logout</a>
-            </div>
-    
-            <div class="ms-2 text-center">
-                <h1>Super Social Reader!!!</h1>
-            </div>
-        </nav>
-        <main class="d-flex d-flex justify-content-around align-items-center dashboard align-items-center ">
-            <div class="bg-warning d-flex flex-column border border-dark border-1 p-2 mt-5 comic-details">
-                <img src="{{ url_for('static', filename='comic_detail.png') }}" alt="an open comic book icon">
-                <h2>Artist: {{ this_comic.title }}</h2>
-                <h3>Reading Status: {{this_comic.status}}</h3>
-                <h4> Author(s): {{ this_comic.author }}</h4>
-                <h4>Artist(s):{{ this_comic.artist }}</h4>
-                <h4>Colorist(s):{{ this_comic.colorist }}</h4>
-                <h4>Letterer(s):{{ this_comic.letterer }}</h4>
-                {% if this_comic.user.id == this_user.id %}
-                    <a class="btn btn-success" href="/update/comic/{{this_comic.id}}">Update Comic</a>
-                    <a class="btn btn-danger" href="/delete/comic/{{this_comic.id}}">Delete Comic</a>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Social Reader</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='comics.png') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body class="mx-auto col-8 current-read p-2">
+    <nav class="my-3">
+        <div class="text-end me-2">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+
+        <div class="ms-2 text-center">
+            <h1>Super Social Reader!!!</h1>
+        </div>
+    </nav>
+    <main class="d-flex p-1 justify-content-betwneen">
+        <div class="card bg-warning me-5 text-dark comics details border border-2 border-dark current-background" style="width: 18rem;">
+            <img class="card-img-top" src="{{ url_for('static', filename='comic_detail.png') }}" alt="an open comic book icon">
+            <div class="card-body">
+                <h3 class="card-title">{{ this_comic.title }}</h3>
+                {% if this_comic.thought == None or this_comic.thought | length == 0 %}
+                {% else %}
+                <p class="card-text">Thoughts: {{ this_comic.thought }}</p>
                 {% endif %}
             </div>
-            <div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Author(s): {{ this_comic.author }}</li>
+                <li class="list-group-item">Artist(s):{{ this_comic.artist }}</li>
+                <li class="list-group-item">Colorist(s):{{ this_comic.colorist }}</li>
+                <li class="list-group-item">Letterer(s):{{ this_comic.letterer }}</li>
+            </ul>
+            <div class="card-body d-flex">
+                {% if this_comic.user.id == this_user.id %}
+                <a class="btn btn-success mx-2" href="/update/comic/{{this_comic.id}}">Update Comic</a>
+                <a class="btn btn-danger" href="/delete/comic/{{this_comic.id}}">Delete Comic</a>
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            <div class="comics-discussion ">
+
                 <div>
-                {% with messages = get_flashed_messages(category_filter = ['comment']) %}
+                    {% with messages = get_flashed_messages(category_filter = ['comment']) %}
                     {% if messages %}
                     <div class="alert alert-warning">
                         {% for message in messages %}
@@ -44,34 +58,38 @@
                         {% endfor %}
                     </div>
                     {% endif %}
-                {% endwith %}
-                <div class="bg-warning  comics-discussion ">
-                    <h2>Discussion on comic</h2>
-                    {% if all_comments | length == 0 %}
-                                <p>No comments in yet!</p>
-                            {% else %}
-                            <div class="bg-white border border-4 border-dark my-4 p-3" id="comics-discussion">
-                                {% for this_comment in all_comments %}
-                                    {% if this_comment.sender.id == this_user.id %}
-                                        <p class="text-primary"><strong>{{ this_comment.sender.username }}:</strong> {{ this_comment.content }}</p>
-                                    {% else %}
-                                        <p class="text-dark"><strong>{{ this_comment.sender.username }}:</strong> {{ this_comment.content }}</p>
-                                    {% endif  %}
-                                {% endfor %}
-                            {% endif %}
-                            </div>
-                        <form class="bg-warning" action="/comment/{{this_comic.id}}" method="post">
-                            <label class="form-label" for="content"><h2>Discussion on comic</h2></label>
-                            <textarea placeholder="Dialogue with reader about comic!" class="form-control" name="content" id="content" cols="50" rows="5"></textarea>
-                            <div class="d-flex justify-content-end">
-                                <input class=" btn btn-primary  mt-2" type="submit" value="Comment">
-                            </div>
-                        </form>
-                    </div>
+                    {% endwith %}
                 </div>
+                {% if all_comments | length == 0 %}
+                {% else %}
+                <div class="bg-white border border-4 border-dark my-4 p-3" id="comics-discussion">
+                    {% for this_comment in all_comments %}
+                    {% if this_comment.sender.id == this_user.id %}
+                    <p class="text-primary"><strong>{{ this_comment.sender.username }}:</strong> {{
+                        this_comment.content }}</p>
+                    {% else %}
+                    <p class="text-dark"><strong>{{ this_comment.sender.username }}:</strong> {{
+                        this_comment.content }}</p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <form id="comic-discussion-post" class="bg-warning" action="/comment/{{this_comic.id}}" method="post">
+                    <h2>Discussion on comic</h2>
+                    <label class="form-label" for="content">
+                    </label>
+                    <textarea placeholder="Dialogue with reader about comic!" class="form-control" name="content"
+                        id="content" cols="50" rows="5"></textarea>
+                    <div class="d-flex justify-content-end">
+                        <input class=" btn btn-primary  mt-2" type="submit" value="Comment">
+                    </div>
+                </form>
+            </div>
         </div>
-        </main>
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
-    </body>
+</body>
+
 </html>

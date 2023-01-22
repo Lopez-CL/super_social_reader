@@ -14,9 +14,9 @@
 </head>
 <body class="mx-auto col-8 super-background">
 
-    <nav class="my-3">
+    <nav class="mt-5">
         <div class="text-end me-2">
-            <a href="/logout">Logout</a>
+            <a href="/logout">Logout</a> | 
             <a href="/upload/page">Edit Profile image</a>
         </div>
 
@@ -24,17 +24,17 @@
             <h1>Super Social Reader!!!</h1>
         </div>
     </nav>
-    <main class="d-flex justify-content-around dashboard align-items-center ">
+    <main class="d-flex justify-content-around align-items-center ">
         <div>
             <h2 class="text-center readar-header text-white">Reader Radar</h2>
-        <div class="reading-list d-flex flex-column p-2 border border-dark border-3">
+        <div class="reading-list d-flex flex-column border border-dark border-3">
             {% if all_comics == None %}
                 <p>No Reading Activity Detected</p>
             {% else %}
             {% for this_comic in all_comics %}
                 {% if this_comic.user.id != this_user.id %}
                     {% if this_comic.status == 'reading' %}
-                    <div class="bg-warning border border-3 border-dark mb-3 p-1 text-wrap">
+                    <div class="bg-warning border border-3 border-dark my-2 p-1 text-wrap">
                         {% if this_comic.user.file_name == None %}
                             <img class="avatar-image radar-avatar mx-2" src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
                         {% else %}
@@ -74,7 +74,7 @@
                 <div class=" d-flex reading-routes">
                     <div>
                         <a title="past comics" href="/user/{{this_user.id}}/past/comics"><img class="route bg-warning mx-3" src="../static/assets/past.png" alt="" srcset=""> </a>
-                        <a title="add comic" href="/add/comic"><img class="route bg-warning" src="../static/assets/add.png" alt="" srcset=""></a>
+                        <a title="add comic" href="/add/comic"><img class="route bg-warning" src="../static/assets/add_comic_icon.png" alt="" srcset=""></a>
                     </div>
                 </div>
         </div>

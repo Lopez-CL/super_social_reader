@@ -21,8 +21,8 @@
             <h1>Super Social Reader!!!</h1>
         </div>
     </nav>
-    <main class="login-registration">
-        <h2 class="text-start ms-4 py-2">Update Comic!</h2>
+    <main class="comic-forms">
+        <h2 class="text-center ms-4 py-2">Update Comic!</h2>
         {% with messages = get_flashed_messages(category_filter = ['comic']) %}
             {% if messages %}
             <div class="alert alert-warning">
@@ -32,29 +32,29 @@
             </div>
             {% endif %}
         {% endwith %}
-        <form action="/update/{{this_comic.id}}" method="post">
-            <div class="d-flex mt-1">
-                <label class="form-label" for="title">Title:</label>
+        <form class="d-flex flex-column col-6 mx-auto comic-form align-items-between" action="/update/{{this_comic.id}}" method="post">
+            <div class="mt-1">
+                <label class="form-label" for="title">Title</label>
                 <input class="form-control" name="title" id="title" type="text" value="{{this_comic.title}}">
             </div>
-            <div class="d-flex mt-1">
-                <label class="form-label" for="author">Author(s):</label>
+            <div class="mt-1">
+                <label class="form-label" for="author">Author(s)</label>
                 <input class="form-control" name="author" id="author" type="text" value="{{this_comic.author}}">
             </div>
-            <div class="d-flex my-2">
-                <label class="form-label" for="artist">Artist(s):</label>
+            <div class="my-2">
+                <label class="form-label" for="artist">Artist(s)</label>
                 <input class="form-control" name="artist" id="artist" type="text" value="{{this_comic.artist}}">
             </div>
-            <div class="d-flex">
-                <label class="form-label" for="colorist">Colorist(s):</label>
+            <div class=">
+                <label class="form-label" for="colorist">Colorist(s)</label>
                 <input class="form-control" name="colorist" id="colorist" type="text" value="{{this_comic.colorist}}">
             </div>
-            <div class="d-flex my-2">
-                <label class="form-label" for="letterer">Letterer(s):</label>
+            <div class="my-2">
+                <label class="form-label" for="letterer">Letterer(s)</label>
                 <input class="form-control" name="letterer" id="letterer" type="text" value="{{this_comic.letterer}}">
             </div>
-            <div class="d-flex my-2">
-                <label class="form-label" for="status">Status:</label>
+            <div class="my-2">
+                <label class="form-label" for="status">Status</label>
                 <select class="form-control" name="status" id="status">
                     <option value="{{this_comic.status}}">{{this_comic.status}}</option>
                     <option value="not reading">Not Reading</option>
@@ -63,12 +63,12 @@
                     <option value="finished">Finished</option>
                 </select>
             </div>
-            <div class="d-flex my-2">
-                <label class="form-label" for="rating">Rating:</label>
+            <div class="my-2">
+                <label class="form-label" for="rating">Rating</label>
                 <input class="form-control" name="rating" id="rating" min="0" max="10" type="number" value="0" placeholder="Ready to rate?">
             </div>
-            <div class="d-flex my-2">
-                <label class="form-label" for="thought">Thoughts:</label>
+            <div class="my-2">
+                <label class="form-label" for="thought">Thoughts</label>
                 <textarea rows="4" cols="35" id="thought" name="thought" placeholder="Ready to share your thoughts?"></textarea>
             </div>
             <div class="d-flex my-1 justify-content-end">

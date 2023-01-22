@@ -4,6 +4,14 @@
 
 }
 
+@keyframes color-mirage {
+    0% {background-image: linear-gradient(90deg, dodgerblue, white, gold);}
+    25% {background-image: linear-gradient(90deg, dodgerblue, white);}
+    50% {background-image: linear-gradient(90deg, dodgerblue,gold);}
+    75% {background-image: linear-gradient(90deg, white,gold);}
+    100% {background-image: linear-gradient(90deg, dodgerblue,gold);}
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -23,7 +31,7 @@ nav {
     box-shadow: 8px 8px 1px black;
 }
 /* The class of login-reg Main elements */
-.login-registration{
+.login-registration, .comic-forms{
     padding: 1rem;
     margin-top: 50px;
 }
@@ -36,8 +44,11 @@ form.user-form {
     border: 10px solid black;
     background-color: white;
 }
-input.form-control{
+input.user-form{
     width: max-content;
+}
+input.comic-form{
+    width: auto !important;
 }
 
 /* .dashboard{
@@ -49,12 +60,35 @@ input.form-control{
     background-size: cover;
 }
 .super-register{
-    background-image: url('../static/assets/registration.jpg') !important;
-    background-repeat: no-repeat;
-    background-size: cover;
+    animation: color-mirage 5s infinite;
+    background-image: linear-gradient( 90deg, dodgerblue, white, gold)
 }
 .super-background{
     background-image: url('../static/assets/realistic.png') !important;
+    background-repeat: repeat;
+    background-size: cover;
+    background-position:center;
+}
+.current-read{
+    background-image: url('../static/assets/super_profile.jpeg') !important;
+    background-repeat: repeat;
+    background-size: cover;
+    background-position:center;
+}
+.past-reads{
+    background-image: url('../static/assets/past_reads_bg.jpg') !important;
+    background-repeat: repeat;
+    background-size: cover;
+    background-position:center;
+}
+.add-comic{
+    background-image: url('../static/assets/add_bg.jpg') !important;
+    background-repeat: repeat;
+    background-size: cover;
+    background-position:center;
+}
+.edit-image{
+    background-image: url('../static/assets/registration.jpg') !important;
     background-repeat: repeat;
     background-size: cover;
     background-position:center;
@@ -69,8 +103,8 @@ input.form-control{
     width: 175px;
 }
 #user-avatar-image{
-    position:sticky;
-    bottom: 150px;
+    position:relative;
+    bottom: 15px;
 }
 .radar-avatar{
     border-radius: 100%;
@@ -80,6 +114,7 @@ input.form-control{
 }
 
 .reading-list{
+    padding: .5rem;
     overflow: scroll;
     height: 300px;
     width: max-content;
@@ -98,13 +133,14 @@ input.form-control{
     position: sticky;
 }
 #bubble-content{
+    margin-top: 75px !important;
     height: 85px;
     width: fit-content;
     overflow: scroll;
 }
 .reading-routes{
-    position: sticky;
-    bottom: 100px;
+    position: relative;
+    bottom: 50px;
 }
 .route{
     height: 70px;
@@ -115,6 +151,9 @@ input.form-control{
 .comic-details{
     width: min-content;
     text-overflow: clip;
+}
+#comic-discussion-post{
+    box-shadow: 2px 2px 2px black;
 }
 
 .past-reads{
