@@ -25,31 +25,36 @@
     </nav>
     <main class=" d-flex flex-wrap justify-content-evenly me-5">
         {% for this_comic in this_users_reads.comics %}
-        {% if this_comic.status == 'finished' %}
         <div class="card bg-warning text-dark comics details border border-2 border-dark mb-5" style="width: 18rem;">
-            <img class="card-img-top" src="{{ url_for('static', filename='comic_detail.png') }}"
-                alt="an open comic book icon">
+            {% if this_comic.status == 'finished' %}
+                <a href="/comic/{{this_comic.id}}"><img class="card-img-top finished-comic" src="{{ url_for('static', filename='comic_detail.png') }}"
+                    alt="an open comic book icon"></a>
+            {%else%}
+            <a href="/comic/{{this_comic.id}}"><img class="card-img-top" src="{{ url_for('static', filename='comic_detail.png') }}"
+                    alt="an open comic book icon"></a>
+            {% endif %}
             <div class="card-body">
                 <h3 class="card-title">{{ this_comic.title }}</h3>
+                <h4 class="card-title">Reading Status: {{ this_comic.status }}</h4>
                 {% if this_comic.thought == None or this_comic.thought | length == 0 %}
                 {% else %}
                 <p class="card-text">Thoughts: {{ this_comic.thought }}</p>
+                <p class="card-text">I rate this: {{ this_comic.rating }}</p>
                 {% endif %}
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Author(s): {{ this_comic.author }}</li>
-                <li class="list-group-item">Artist(s):{{ this_comic.artist }}</li>
-                <li class="list-group-item">Colorist(s):{{ this_comic.colorist }}</li>
-                <li class="list-group-item">Letterer(s):{{ this_comic.letterer }}</li>
+                <li class="list-group-item list-group-item-action">Author(s): {{ this_comic.author }}</li>
+                <li class="list-group-item list-group-item-action">Artist(s):{{ this_comic.artist }}</li>
+                <li class="list-group-item list-group-item-action">Colorist(s):{{ this_comic.colorist }}</li>
+                <li class="list-group-item list-group-item-action">Letterer(s):{{ this_comic.letterer }}</li>
             </ul>
-            <div class="card-body d-flex">
+            <div class="card-body d-flex justify-content-center">
                 {% if this_comic.user_id == this_user.id %}
-                <a class="btn btn-success mx-2" href="/update/comic/{{this_comic.id}}">Update Comic</a>
-                <a class="btn btn-danger" href="/delete/comic/{{this_comic.id}}">Delete Comic</a>
+                <a class="read-action btn btn-success mx-2" href="/update/comic/{{this_comic.id}}">Update</a>
+                <a class="read-action btn btn-danger" href="/delete/comic/{{this_comic.id}}">Delete</a>
                 {% endif %}
             </div>
         </div>
-        {% endif %}
         {% endfor %}
     </main>
     <script src="https://code.jquery.com/jquery-3.6.3.js"

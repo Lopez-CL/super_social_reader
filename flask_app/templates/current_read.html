@@ -25,7 +25,13 @@
     </nav>
     <main class="d-flex p-1 justify-content-betwneen">
         <div class="card bg-warning me-5 text-dark comics details border border-2 border-dark current-background" style="width: 18rem;">
-            <img class="card-img-top" src="{{ url_for('static', filename='comic_detail.png') }}" alt="an open comic book icon">
+            {% if this_comic.status == 'finished' %}
+                <img class="card-img-top finished-comic" src="{{ url_for('static', filename='comic_detail.png') }}"
+                    alt="an open comic book icon">
+            {%else%}
+                <img class="card-img-top" src="{{ url_for('static', filename='comic_detail.png') }}"
+                    alt="an open comic book icon">
+            {% endif %}
             <div class="card-body">
                 <h3 class="card-title">{{ this_comic.title }}</h3>
                 {% if this_comic.thought == None or this_comic.thought | length == 0 %}

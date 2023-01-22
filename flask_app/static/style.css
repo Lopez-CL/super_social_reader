@@ -121,6 +121,10 @@ input.comic-form{
     background-color: aliceblue;
 }
 
+.finished-comic{
+    filter: grayscale(100%);
+}
+
 .current-user-comics{
     background-image: url('../static/assets/current.png') !important;
     background-repeat: no-repeat;
@@ -147,7 +151,13 @@ input.comic-form{
     width: 70px;
     border-radius: 5px !important;
     padding: 1px !important;
+    background-color: #fec107;
 }
+
+.route-bg-active{
+    background-color: darkturquoise !important;
+}
+
 .comic-details{
     width: min-content;
     text-overflow: clip;
@@ -160,6 +170,12 @@ input.comic-form{
     overflow: scroll;
     height: 50%;
 }
-.flex-item{
-    flex: 1fr;
+
+.read-action{
+    height:min-content;
+    width: 200px;
+}
+
+.active-box{
+    box-shadow: 3px 3px 1px 2px black;
 }
