@@ -81,9 +81,7 @@ def clear_sesh():
     session.clear()
     return redirect('/')
 
-# page upload
-
-
+# user_image upload
 @app.route('/upload/image', methods=['POST'])
 def add_image():
     if 'file' not in request.files:
