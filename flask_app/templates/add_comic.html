@@ -31,7 +31,7 @@
             </div>
             {% endif %}
         {% endwith %}
-        <form class="d-flex flex-column col-6 mx-auto comic-form align-items-between bg-light" action="/create/comic" method="post">
+        <form class="d-flex flex-column col-6 mx-auto comic-form align-items-between bg-light" action="/create/comic" method="post" enctype="multipart/form-data">
             <legend><h2 class="text-center ms-4 py-2">Your Next Comic!</h2></legend>
             <div class=" mt-2">
                 <label class="form-label" for="title">Title</label>
@@ -53,14 +53,18 @@
                 <label class="form-label" for="letterer">Letterer(s)</label>
                 <input class="form-control" name="letterer" id="letterer" type="text" placeholder="Be sure to place a ','between colorists' names if multiple...">
             </div>
+            <div class="mt-2">
+                <label class="form-label" for="file">Add Cover Art (optional)</label>
+                <input class="form-control" name="file" id="file" type="file">
+            </div>
             <div class="mt-1">
                 <label class="form-label" for="status">Status</label>
                 <select class="form-control" name="status" id="status">
                     <option value="">Set reading status</option>
-                    <option value="not reading">Not Reading</option>
-                    <option value="reading">Reading</option>
-                    <option value="paused">Paused</option>
-                    <option value="finished">Finished</option>
+                    <option value="Not Reading">Not Reading</option>
+                    <option value="Reading">Reading</option>
+                    <option value="Paused">Paused</option>
+                    <option value="Finished">Finished</option>
                 </select>
             </div>
             <!-- Right now I think it makes sense to display these categories for when the user finishes the book. Displaying here doesn't make sense to me. Debating if they should even show in update all the time, or if they should only display when this_comic.status == 'Finished'-->

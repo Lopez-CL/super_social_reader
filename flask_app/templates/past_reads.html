@@ -24,14 +24,31 @@
         </div>
     </nav>
     <main class=" d-flex flex-wrap justify-content-evenly me-5">
+        {% if this_users_reads.comics[0].title == None %}
+        <div class="card bg-light text-dark comics details border border-2 border-dark mb-5" style="width: 18rem;">
+            <div class="card-body">
+                <h3 class="card-title">Library is empty!</h3>
+        </div>
+        {% else %}
         {% for this_comic in this_users_reads.comics %}
         <div class="card bg-warning text-dark comics details border border-2 border-dark mb-5" style="width: 18rem;">
-            {% if this_comic.status == 'finished' %}
-                <a href="/comic/{{this_comic.id}}"><img class="card-img-top finished-comic" src="{{ url_for('static', filename='comic_detail.png') }}"
-                    alt="an open comic book icon"></a>
+            {% if this_comic.status == 'Finished' %}
+            {% if this_comic.cover_art == None %}
+            <img class="card-img-top finished-comic" src="{{ url_for('static', filename='comic_detail.png') }}"
+                alt="an open comic book icon">
             {%else%}
-            <a href="/comic/{{this_comic.id}}"><img class="card-img-top" src="{{ url_for('static', filename='comic_detail.png') }}"
-                    alt="an open comic book icon"></a>
+            <img class="card-img-top finished-comic added-image mx-auto mt-2"
+                src="{{ url_for('static', filename= 'assets/cover_art/' + this_comic.cover_art) }}" alt="an open comic book icon">
+            {% endif %}
+            {%else%}
+            {% if this_comic.cover_art == None %}
+            <img class="card-img-top" src="{{ url_for('static', filename='comic_detail.png') }}"
+                alt="an open comic book icon">
+            {%else%}
+            <img class="card-img-top added-image mx-auto mt-2"
+                src="{{ url_for('static', filename= 'assets/cover_art/' + this_comic.cover_art) }}"
+                alt="an open comic book icon mt">
+            {% endif %}
             {% endif %}
             <div class="card-body">
                 <h3 class="card-title">{{ this_comic.title }}</h3>
@@ -56,6 +73,7 @@
             </div>
         </div>
         {% endfor %}
+        {% endif %}
     </main>
     <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>

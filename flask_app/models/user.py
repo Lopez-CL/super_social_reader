@@ -48,6 +48,15 @@ class User:
             print('found and getting user...')
             return cls(result[0])
     @classmethod
+    def get_user_by_username(cls, data):
+        query = 'SELECT * FROM users WHERE username = %(username)s;'
+        result = connectToMySQL(db_name).query_db(query, data)
+        if len(result) == 0:
+            print('We had trouble searching for username...')
+        else:
+            print('found and getting user...')
+            return cls(result[0])
+    @classmethod
     def get_user_by_email(cls, data):
         query = 'SELECT * FROM users WHERE email = %(email)s;'
         result = connectToMySQL(db_name).query_db(query, data)
@@ -81,6 +90,7 @@ class User:
                     'status': dictionary['status'],
                     'rating': dictionary['rating'],
                     'thought': dictionary['thought'],
+                    'cover_art': dictionary['cover_art'],
                     'created_at': dictionary['comics.created_at'],
                     'updated_at': dictionary['comics.updated_at']
                 }
@@ -93,6 +103,13 @@ class User:
         is_valid = True
         if len(reg_data['username']) < 2:
             flash('*Username must be 2 characters or more!', 'register')
+            is_valid = False
+        username_data = {
+            'username': reg_data['username']
+        }
+        found_username_or_not = User.get_user_by_username(username_data)
+        if found_username_or_not != None:
+            flash(f'{reg_data["username"]} has already been used', 'register')
             is_valid = False
         if not EMAIL_REGEX.match(reg_data['email']):
             flash('*Please provide a valid email address', 'register')

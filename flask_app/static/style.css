@@ -4,6 +4,8 @@
 
 }
 
+/* @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,700;1,300&display=swap'); */
+
 /* @keyframes color-mirage {
     0% {background-image: linear-gradient(90deg, dodgerblue, white, gold);}
     25% {background-image: linear-gradient(90deg, dodgerblue, white);}
@@ -182,6 +184,11 @@ input.comic-form{
 }
 #comic-discussion-post{
     box-shadow: 2px 2px 2px black;
+}
+
+.added-image{
+    width: 200px !important;
+    height: 250px;
 }
 
 .past-reads{
