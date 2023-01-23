@@ -19,6 +19,7 @@ class Comic:
         self.thought = data['thought']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.cover_art = data['cover_art']
         self.user = None
 
 # CRUD Class methods
@@ -26,8 +27,8 @@ class Comic:
     @classmethod
     def save(cls, data):
         query = """INSERT INTO comics
-        (user_id, title, author, artist, colorist, letterer, status, rating,thought)
-        VALUES (%(user_id)s,%(title)s,%(author)s,%(artist)s,%(colorist)s,%(letterer)s,%(status)s,%(rating)s,%(thought)s);"""
+        (user_id, title, author, artist, colorist, letterer, status, rating,thought, cover_art)
+        VALUES (%(user_id)s,%(title)s,%(author)s,%(artist)s,%(colorist)s,%(letterer)s,%(status)s,%(rating)s,%(thought)s,%(cover_art)s);"""
         print('Creating comic!')
         return connectToMySQL(db_name).query_db(query, data)
         
@@ -41,8 +42,9 @@ class Comic:
         letterer = %(letterer)s, 
         status = %(status)s, 
         rating = %(rating)s,
-        thought = %(thought)s
-        WHERE id = %(id)s
+        thought = %(thought)s,
+        cover_art = %(cover_art)s
+        WHERE id = %(id)s;
         """
         return connectToMySQL(db_name).query_db(query,data)
 

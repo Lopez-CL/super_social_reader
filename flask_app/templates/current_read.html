@@ -24,13 +24,20 @@
         </div>
     </nav>
     <main class="d-flex p-1 justify-content-betwneen">
-        <div class="card bg-warning me-5 text-dark comics details border border-2 border-dark current-background" style="width: 18rem;">
-            {% if this_comic.status == 'finished' %}
-                <img class="card-img-top finished-comic" src="{{ url_for('static', filename='comic_detail.png') }}"
-                    alt="an open comic book icon">
+        <div class="card bg-warning me-5 text-dark comics details border border-2 border-dark current-background"
+            style="width: 18rem;">
+            {% if this_comic.status == 'Finished' %}
+                {% if this_comic.cover_art == None %}
+                    <img class="card-img-top finished-comic" src="{{ url_for('static', filename='comic_detail.png') }}" alt="an open comic book icon">
+                {%else%}
+                    <img class="card-img-top finished-comic added-image mx-auto mt-2" src="{{ url_for('static', filename= 'assets/cover_art/' + this_comic.cover_art) }}" alt="an open comic book icon">
+                {% endif %}
             {%else%}
-                <img class="card-img-top" src="{{ url_for('static', filename='comic_detail.png') }}"
-                    alt="an open comic book icon">
+                {% if this_comic.cover_art == None %}
+                    <img class="card-img-top" src="{{ url_for('static', filename='comic_detail.png') }}"alt="an open comic book icon">
+                {%else%}
+                    <img class="card-img-top added-image mx-auto mt-2" src="{{ url_for('static', filename= 'assets/cover_art/' + this_comic.cover_art) }}" alt="an open comic book icon mt">
+                {% endif %}
             {% endif %}
             <div class="card-body">
                 <h3 class="card-title">{{ this_comic.title }}</h3>
@@ -84,10 +91,11 @@
                     <h2>Discussion on comic</h2>
                     <label class="form-label" for="content">
                     </label>
-                    <textarea placeholder="Dialogue with reader about comic!" class="form-control comment-text" name="content"
-                        id="content" cols="50" rows="5"></textarea>
+                    <textarea placeholder="Dialogue with reader about comic!" class="form-control comment-text"
+                        name="content" id="content" cols="50" rows="5"></textarea>
                     <br>
-                    <span class="comment-count">Characters remaining: </span><span class=" comment-count comment-characters">255</span>
+                    <span class="comment-count">Characters remaining: </span><span
+                        class=" comment-count comment-characters">255</span>
                     <div class="d-flex justify-content-end">
                         <input class=" btn btn-primary  mt-2" type="submit" value="Comment">
                     </div>

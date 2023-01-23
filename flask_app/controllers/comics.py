@@ -1,7 +1,11 @@
 from flask_app import app
 from flask_app.models import comic, user, comment
 from flask import request, redirect, session, render_template
-
+from werkzeug.utils import secure_filename
+import os
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+def allowed_file(filename):
+	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 # Page Renders
 
 @app.route('/dashboard')
@@ -54,9 +58,16 @@ def render_update_comic_page(id):
 
 @app.route('/create/comic', methods=['post'])
 def add_comic():
+    filename = None
     if not comic.Comic.val_comic(request.form):
         return redirect('/add/comic')
     else:
+        if request.files['file'].filename != None or len(request.files['file'].filename) == 0:
+            file = request.files['file']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER_COVER'], filename))
+                print('upload_image filename: ' + filename)
         data = {
             'user_id': session['user_id'],
             'title': request.form['title'],
@@ -66,7 +77,8 @@ def add_comic():
             'letterer': request.form['letterer'],
             'status': request.form['status'],
             'rating': None,
-            'thought': None
+            'thought': None,
+            'cover_art': filename
         }
         comic.Comic.save(data)
         return redirect('/dashboard')
@@ -76,7 +88,16 @@ def update_comic(id):
     if not comic.Comic.val_comic(request.form):
         return redirect(f'/update/comic/{id}')
     else:
+        filename = request.form['file']
+        print(request.form['file'])
+        if request.files['file'].filename != None or len(request.files['file'].filename) != 0:
+            file = request.files['file']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER_COVER'], filename))
+                print('upload_image filename: ' + filename)
         data = {
+            'user_id': session['user_id'],
             'title': request.form['title'],
             'author': request.form['author'],
             'artist': request.form['artist'],
@@ -85,6 +106,7 @@ def update_comic(id):
             'status': request.form['status'],
             'rating':request.form['rating'],
             'thought': request.form['thought'],
+            'cover_art': filename,
             'id': id
         }
         comic.Comic.update_comic(data)

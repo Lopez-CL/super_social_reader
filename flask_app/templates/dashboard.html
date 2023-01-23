@@ -28,12 +28,12 @@
         <div class="reading-container  border border-dark border-3">
             <h2 class="text-center readar-header text-dark border-bottom-1">Reader Radar</h2>
             <div class="reading-list d-flex flex-column">
-                {% if all_comics == None %}
+                {% if all_comics | length == 0  %}
                     <p>No Reading Activity Detected</p>
                 {% else %}
                 {% for this_comic in all_comics %}
                     {% if this_comic.user.id != this_user.id %}
-                        {% if this_comic.status == 'reading' %}
+                        {% if this_comic.status == 'Reading' %}
                         <div class="bg-warning box-action reader-area border border-3 border-dark my-2 p-1 text-wrap">
                             {% if this_comic.user.file_name == None %}
                                 <img class="avatar-image radar-avatar mx-2" src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
@@ -59,9 +59,9 @@
                             <p class="text-center"><a  href="/comic/{{this_user_comic.id}}">{{this_user_comic.title}}</a></p>
                             {% endfor %}
                         {% endif %}
-                        <p class="text-center">Yooooo</p>
-                        <p class="text-center">Yooooo</p>
-                        <p class="text-center">Yooooo</p>
+                        <p class="text-center">Test Comic</p>
+                        <p class="text-center">Test Comic</p>
+                        <p class="text-center">Test Comic</p>
                     </div>
                 </div>
                 <div id="user-avatar-image">

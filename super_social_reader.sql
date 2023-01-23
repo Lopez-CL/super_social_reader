@@ -43,11 +43,13 @@ CREATE TABLE IF NOT EXISTS `super_social_reader`.`comics` (
   `letterer` VARCHAR(255) NULL,
   `status` VARCHAR(255) NULL,
   `rating` INT NULL,
-  `thought` TEXT NULL,
+  `thought` VARCHAR(255) NULL,
   `created_at` DATETIME NULL DEFAULT NOW(),
   `updated_at` DATETIME NULL DEFAULT NOW(),
+  `cover_art` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_comics_users_idx` (`user_id` ASC) VISIBLE,
+  UNIQUE INDEX `created_at_UNIQUE` (`created_at` ASC) VISIBLE,
   CONSTRAINT `fk_comics_users`
     FOREIGN KEY (`user_id`)
     REFERENCES `super_social_reader`.`users` (`id`)
