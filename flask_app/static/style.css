@@ -4,13 +4,13 @@
 
 }
 
-@keyframes color-mirage {
+/* @keyframes color-mirage {
     0% {background-image: linear-gradient(90deg, dodgerblue, white, gold);}
     25% {background-image: linear-gradient(90deg, dodgerblue, white);}
     50% {background-image: linear-gradient(90deg, dodgerblue,gold);}
     75% {background-image: linear-gradient(90deg, white,gold);}
     100% {background-image: linear-gradient(90deg, dodgerblue,gold);}
-}
+} */
 
 * {
     margin: 0;
@@ -22,6 +22,7 @@ body{
 }
 a{
     text-decoration: none !important;
+    /* font-family:; */
 }
 
 nav {
@@ -41,7 +42,7 @@ form {
 }
 form.user-form {
     padding: 1rem;
-    border: 10px solid black;
+    border: 6px solid black;
     background-color: white;
 }
 input.user-form{
@@ -50,24 +51,31 @@ input.user-form{
 input.comic-form{
     width: auto !important;
 }
-
+.comic-form-update{
+    height: 500px;
+    overflow: scroll;
+}
 /* .dashboard{
 } */
 
 .super-login{
     background-image: url('../static/assets/login.jpg') !important;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
 }
 .super-register{
-    animation: color-mirage 5s infinite;
-    background-image: linear-gradient( 90deg, dodgerblue, white, gold)
+    /* animation: color-mirage 5s infinite;
+    background-image: linear-gradient( 45deg, dodgerblue, white, crimson, grey, gold); */
+    background-image: url('../static/assets/login.jpg') !important;
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: right;
 }
 .super-background{
     background-image: url('../static/assets/realistic.png') !important;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position:center;
+    /* background-position:; */
 }
 .current-read{
     background-image: url('../static/assets/super_profile.jpeg') !important;
@@ -82,13 +90,13 @@ input.comic-form{
     background-position:center;
 }
 .add-comic{
-    background-image: url('../static/assets/add_bg.jpg') !important;
+    background-image: url('../static/assets/add_comic.jpg') !important;
     background-repeat: repeat;
     background-size: cover;
     background-position:center;
 }
 .edit-image{
-    background-image: url('../static/assets/registration.jpg') !important;
+    background-image: url('../static/assets/update.jpg') !important;
     background-repeat: repeat;
     background-size: cover;
     background-position:center;
@@ -113,14 +121,22 @@ input.comic-form{
     float: left;
 }
 
-.reading-list{
-    padding: .5rem;
-    overflow: scroll;
-    height: 300px;
+.reading-container{
+    padding: 1rem;
+    height: 275px;
     width: max-content;
     background-color: aliceblue;
+    overflow: scroll;
+    height: 200px;
 }
-
+/* .reading-list{
+    overflow: scroll;
+    height: 200px;
+    width: max-content;
+} */
+.reader-area {
+    height: max-content;
+}
 .finished-comic{
     filter: grayscale(100%);
 }
@@ -156,6 +172,8 @@ input.comic-form{
 
 .route-bg-active{
     background-color: darkturquoise !important;
+    height: 80px;
+    width: 80px;
 }
 
 .comic-details{
@@ -177,5 +195,5 @@ input.comic-form{
 }
 
 .active-box{
-    box-shadow: 3px 3px 1px 2px black;
+    box-shadow: 2px 3px 2px 1px black;
 }

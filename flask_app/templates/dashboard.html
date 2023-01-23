@@ -14,7 +14,7 @@
 </head>
 <body class="mx-auto col-8 super-background">
 
-    <nav class="mt-5">
+    <nav class="my-5">
         <div class="text-end me-2">
             <a href="/logout">Logout</a> | 
             <a href="/upload/page">Edit Profile image</a>
@@ -24,29 +24,29 @@
             <h1>Super Social Reader!!!</h1>
         </div>
     </nav>
-    <main class="d-flex justify-content-around align-items-center ">
-        <div>
-            <h2 class="text-center readar-header text-white">Reader Radar</h2>
-        <div class="reading-list d-flex flex-column border border-dark border-3">
-            {% if all_comics == None %}
-                <p>No Reading Activity Detected</p>
-            {% else %}
-            {% for this_comic in all_comics %}
-                {% if this_comic.user.id != this_user.id %}
-                    {% if this_comic.status == 'reading' %}
-                    <div class="bg-warning box-action reader-area border border-3 border-dark my-2 p-1 text-wrap">
-                        {% if this_comic.user.file_name == None %}
-                            <img class="avatar-image radar-avatar mx-2" src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
-                        {% else %}
-                            <img class="avatar-image radar-avatar mx-2" src="../static/assets/user_images/{{this_comic.user.file_name}}" alt="user" srcset="">
+    <main class="d-flex justify-content-around ">
+        <div class="reading-container  border border-dark border-3">
+            <h2 class="text-center readar-header text-dark border-bottom-1">Reader Radar</h2>
+            <div class="reading-list d-flex flex-column">
+                {% if all_comics == None %}
+                    <p>No Reading Activity Detected</p>
+                {% else %}
+                {% for this_comic in all_comics %}
+                    {% if this_comic.user.id != this_user.id %}
+                        {% if this_comic.status == 'reading' %}
+                        <div class="bg-warning box-action reader-area border border-3 border-dark my-2 p-1 text-wrap">
+                            {% if this_comic.user.file_name == None %}
+                                <img class="avatar-image radar-avatar mx-2" src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
+                            {% else %}
+                                <img class="avatar-image radar-avatar mx-2" src="../static/assets/user_images/{{this_comic.user.file_name}}" alt="user" srcset="">
+                            {% endif %}
+                            <p class="" ><a href="/user/{{this_comic.user.id}}/past/comics">{{ this_comic.user.username }}</a> is currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
+                        </div>
                         {% endif %}
-                        <p class="" ><a href="/user/{{this_comic.user.id}}/past/comics">{{ this_comic.user.username }}</a> is currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
-                    </div>
                     {% endif %}
+                {% endfor %}
                 {% endif %}
-            {% endfor %}
-            {% endif %}
-        </div>
+            </div>
         </div>
         <div class="user-info">
                 <div class="d-flex flex-column justify-content-start align-items-center current-user-comics p-1">
