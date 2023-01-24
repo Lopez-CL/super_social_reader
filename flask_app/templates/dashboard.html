@@ -52,16 +52,13 @@
                 <div class="d-flex flex-column justify-content-start align-items-center current-user-comics p-1">
                     <!-- I wonder if I could make background of this div a thought bubble? Avoid the arbitrary positioning? -->
                     <div class="mt-5" id="bubble-content">
-                        {% if all_users_comics == None %}
-                            <p class="text-center mt-5">Not reading anything yet!</p>
+                        {% if all_users_comics | length == 0 %}
+                            <p class="text-center mt-2"><strong>Not reading anything yet!</strong></p>
                         {% else %}
                             {% for this_user_comic in all_users_comics %}
                             <p class="text-center text-wrap"><a  href="/comic/{{this_user_comic.id}}">{{this_user_comic.title}}</a></p>
                             {% endfor %}
                         {% endif %}
-                        <p class="text-center">Test Comic</p>
-                        <p class="text-center">Test Comic</p>
-                        <p class="text-center">Test Comic</p>
                     </div>
                 </div>
                 <div id="user-avatar-image">

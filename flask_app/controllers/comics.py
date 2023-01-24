@@ -45,6 +45,8 @@ def render_comic_detail(id):
 def render_update_comic_page(id):
     if 'user_id' not in session:
         return redirect('/')
+    if 'user_id' not in session:
+        return redirect('/')
     else:
         data = {
             'id': id
@@ -58,6 +60,8 @@ def render_update_comic_page(id):
 
 @app.route('/create/comic', methods=['post'])
 def add_comic():
+    if 'user_id' not in session:
+        return redirect('/')
     filename = None
     if not comic.Comic.val_comic(request.form):
         return redirect('/add/comic')
@@ -85,6 +89,8 @@ def add_comic():
 
 @app.route("/update/<int:id>", methods=['post'])
 def update_comic(id):
+    if 'user_id' not in session:
+        return redirect('/')
     if not comic.Comic.val_comic(request.form):
         return redirect(f'/update/comic/{id}')
     else:

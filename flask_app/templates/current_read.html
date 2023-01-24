@@ -45,6 +45,10 @@
                 {% else %}
                 <p class="card-text">Thoughts: {{ this_comic.thought }}</p>
                 {% endif %}
+                {% if this_comic.rating == None %}
+                {% else %}
+                <p class="card-text">Rating: <strong>{{ this_comic.rating }}</strong></p>
+                {% endif %}
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item list-group-item-action">Author(s): {{ this_comic.author }}</li>

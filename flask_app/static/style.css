@@ -4,7 +4,18 @@
 
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:ital,wght@0,700;1,300&display=swap'); */
+/* @font-face {
+    font-family: 'Comic Neue';
+    src: url('../static/assets/fonts/ComicNeue-BoldItalic.eot');
+    src: url('../static/assets/fonts/ComicNeue-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../static/assets/fonts/ComicNeue-BoldItalic.woff2') format('woff2'),
+        url('../static/assets/fonts/ComicNeue-BoldItalic.woff') format('woff'),
+        url('../static/assets/fonts/ComicNeue-BoldItalic.ttf') format('truetype'),
+        url('../static/assets/fonts/ComicNeue-BoldItalic.svg#ComicNeue-BoldItalic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+} */
 
 /* @keyframes color-mirage {
     0% {background-image: linear-gradient(90deg, dodgerblue, white, gold);}
@@ -21,12 +32,14 @@
 body{
     animation-name: page-fades;
     animation-duration: 1.5s;
+    /* font-family: 'Comic Neue'; */
 }
 a{
     text-decoration: none !important;
-    /* font-family:; */
 }
-
+h1{
+    font-size: 35pt !important;
+}
 nav {
     height: 100px;
     background-image:linear-gradient(to right, gold, white, gold);
@@ -135,7 +148,7 @@ input.comic-form{
     width: max-content;
     background-color: aliceblue;
     overflow: scroll;
-    height: 200px;
+    height: 250px;
 }
 /* .reading-list{
     overflow: scroll;
