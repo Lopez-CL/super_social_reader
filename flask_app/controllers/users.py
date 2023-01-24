@@ -27,7 +27,7 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/user/<int:id>/past/comics')
+@app.route('/user/<int:id>/library')
 def render_past_comics(id):
     if 'user_id' not in session:
         return redirect('/')

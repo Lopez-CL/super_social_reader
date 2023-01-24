@@ -26,7 +26,7 @@
     </nav>
     <main class="d-flex justify-content-around ">
         <div class="reading-container  border border-dark border-3">
-            <h2 class="text-center readar-header text-dark border-bottom-1">Reader Radar</h2>
+            <h2 class="text-center readar-header text-dark border-bottom-1"><i class="bi bi-bullseye"></i> Reader Radar</h2>
             <div class="reading-list d-flex flex-column">
                 {% if all_comics | length == 0  %}
                     <p>No Reading Activity Detected</p>
@@ -40,7 +40,7 @@
                             {% else %}
                                 <img class="avatar-image radar-avatar mx-2" src="../static/assets/user_images/{{this_comic.user.file_name}}" alt="user" srcset="">
                             {% endif %}
-                            <p class="" ><a href="/user/{{this_comic.user.id}}/past/comics">{{ this_comic.user.username }}</a> is currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
+                            <p class="" ><a href="/user/{{this_comic.user.id}}/library">{{ this_comic.user.username }}</a> is currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
                         </div>
                         {% endif %}
                     {% endif %}
@@ -56,7 +56,7 @@
                             <p class="text-center mt-5">Not reading anything yet!</p>
                         {% else %}
                             {% for this_user_comic in all_users_comics %}
-                            <p class="text-center"><a  href="/comic/{{this_user_comic.id}}">{{this_user_comic.title}}</a></p>
+                            <p class="text-center text-wrap"><a  href="/comic/{{this_user_comic.id}}">{{this_user_comic.title}}</a></p>
                             {% endfor %}
                         {% endif %}
                         <p class="text-center">Test Comic</p>
@@ -73,8 +73,8 @@
                 </div>
                 <div class=" d-flex reading-routes">
                     <div>
-                        <a title="past comics" href="/user/{{this_user.id}}/past/comics"><img class="route mx-3" src="../static/assets/past.png" alt="" srcset=""> </a>
-                        <a title="add comic" href="/add/comic"><img class="route" src="../static/assets/add_comic_icon.png" alt="" srcset=""></a>
+                        <a title="Library" href="/user/{{this_user.id}}/library"><img class="route mx-3" src="../static/assets/past.png" alt="" srcset=""> </a>
+                        <a title="Add Comic" href="/add/comic"><img class="route" src="../static/assets/add_comic_icon.png" alt="" srcset=""></a>
                     </div>
                 </div>
         </div>

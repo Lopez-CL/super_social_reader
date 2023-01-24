@@ -103,6 +103,12 @@ input.comic-form{
     background-size: cover;
     background-position:center;
 }
+.edit-profile-image{
+    background-image: url('../static/assets/picture.jpg') !important;
+    background-repeat: repeat;
+    background-size: cover;
+    background-position:center;
+}
 .dashboard{
     margin-top: 150px;
 }
@@ -157,7 +163,7 @@ input.comic-form{
 #bubble-content{
     margin-top: 75px !important;
     height: 85px;
-    width: fit-content;
+    width: 150px;
     overflow: scroll;
 }
 .reading-routes{
