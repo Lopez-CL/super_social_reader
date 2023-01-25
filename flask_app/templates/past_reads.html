@@ -20,7 +20,11 @@
         </div>
 
         <div class="ms-2 text-center">
-            <h1>Super Social Reader!!!</h1>
+            {% if this_user.id != this_users_reads.id %}
+            <h1>{{this_users_reads.username}}'s Library</h1>
+            {% else %}
+            <h1>Your Library</h1>
+            {% endif %}
         </div>
     </nav>
     <main class=" d-flex flex-wrap justify-content-evenly me-5">
@@ -51,12 +55,15 @@
             {% endif %}
             {% endif %}
             <div class="card-body">
-                <h3 class="card-title">{{ this_comic.title }}</h3>
+                <a href="/comic/{{this_comic.id}}"><h3 class="card-title">{{ this_comic.title }}</h3></a>
                 <h4 class="card-title">Reading Status: {{ this_comic.status }}</h4>
                 {% if this_comic.thought == None or this_comic.thought | length == 0 %}
                 {% else %}
                 <p class="card-text">Thoughts: {{ this_comic.thought }}</p>
-                <p class="card-text">I rate this: {{ this_comic.rating }}</p>
+                {% endif %}
+                {% if this_comic.rating == None or this_comic.rating == 0  %}
+                {% else %}
+                <p class="card-text">Rating: <strong>I rate this: {{ this_comic.rating }}</strong></p>
                 {% endif %}
             </div>
             <ul class="list-group list-group-flush">

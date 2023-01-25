@@ -45,7 +45,7 @@
                 {% else %}
                 <p class="card-text">Thoughts: {{ this_comic.thought }}</p>
                 {% endif %}
-                {% if this_comic.rating == None %}
+                {% if this_comic.rating == None or this_comic.rating == 0 %}
                 {% else %}
                 <p class="card-text">Rating: <strong>{{ this_comic.rating }}</strong></p>
                 {% endif %}
