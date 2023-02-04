@@ -66,57 +66,56 @@ def add_comic():
     if not comic.Comic.val_comic(request.form):
         return redirect('/add/comic')
     else:
-        if request.files['file'].filename != None or len(request.files['file'].filename) == 0:
-            file = request.files['file']
-            if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER_COVER'], filename))
-                print('upload_image filename: ' + filename)
-        data = {
-            'user_id': session['user_id'],
-            'title': request.form['title'],
-            'author': request.form['author'],
-            'artist': request.form['artist'],
-            'colorist': request.form['colorist'],
-            'letterer': request.form['letterer'],
-            'status': request.form['status'],
-            'rating': None,
-            'thought': None,
-            'cover_art': filename
-        }
-        comic.Comic.save(data)
-        return redirect('/dashboard')
+        file = request.files['file']
+        print('are you catching this here?')
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER_COVER'], filename))
+            print('upload_image filename: ' + filename)
+    data = {
+        'user_id': session['user_id'],
+        'title': request.form['title'],
+        'author': request.form['author'],
+        'artist': request.form['artist'],
+        'colorist': request.form['colorist'],
+        'letterer': request.form['letterer'],
+        'status': request.form['status'],
+        'rating': None,
+        'thought': None,
+        'cover_art': filename
+    }
+    comic.Comic.save(data)
+    return redirect('/dashboard')
 
 @app.route("/update/<int:id>", methods=['post'])
 def update_comic(id):
     if 'user_id' not in session:
         return redirect('/')
+    filename = None
     if not comic.Comic.val_comic(request.form):
         return redirect(f'/update/comic/{id}')
     else:
-        filename = request.form['file']
         print(request.form['file'])
-        if request.files['file'].filename != None or len(request.files['file'].filename) != 0:
-            file = request.files['file']
-            if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER_COVER'], filename))
-                print('upload_image filename: ' + filename)
-        data = {
-            'user_id': session['user_id'],
-            'title': request.form['title'],
-            'author': request.form['author'],
-            'artist': request.form['artist'],
-            'colorist': request.form['colorist'],
-            'letterer': request.form['letterer'],
-            'status': request.form['status'],
-            'rating':request.form['rating'],
-            'thought': request.form['thought'],
-            'cover_art': filename,
-            'id': id
-        }
-        comic.Comic.update_comic(data)
-        return redirect(f'/comic/{id}')
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER_COVER'], filename))
+            print('upload_image filename: ' + filename)
+    data = {
+        'user_id': session['user_id'],
+        'title': request.form['title'],
+        'author': request.form['author'],
+        'artist': request.form['artist'],
+        'colorist': request.form['colorist'],
+        'letterer': request.form['letterer'],
+        'status': request.form['status'],
+        'rating':request.form['rating'],
+        'thought': request.form['thought'],
+        'cover_art': filename,
+        'id': id
+    }
+    comic.Comic.update_comic(data)
+    return redirect(f'/comic/{id}')
 
 @app.route('/delete/comic/<int:id>')
 def delete_comic(id):
