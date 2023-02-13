@@ -2,12 +2,13 @@
 ## Description
 A social reader tracker for superhero comic book readers to connect, discuss, and keep track of the comics they read.
 
-__rest of documentation forthcoming__
+**rest of documentation forthcoming**
 
 ## Controller Routes
 ### Users
 | Type | Path | Notes
 | ------- | ------- | ------- |
+| GET | / | Renders index.html |
 ### Comics
 | Type | Path | Notes
 | ------- | ------- | ------- |
