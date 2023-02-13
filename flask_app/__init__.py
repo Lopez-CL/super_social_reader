@@ -1,4 +1,3 @@
-#__init__.py
 from flask import Flask
 app = Flask(__name__)
 UPLOAD_FOLDER = "flask_app/static/assets/user_images/"

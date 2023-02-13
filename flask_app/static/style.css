@@ -34,50 +34,18 @@ body{
     animation-duration: 1.5s;
     /* font-family: 'Comic Neue'; */
 }
-a{
-    text-decoration: none !important;
-}
-h1{
-    font-size: 35pt !important;
-}
-nav {
-    height: 100px;
-    background-image:linear-gradient(to right, gold, white, gold);
-    border: 5px solid black;
-    box-shadow: 8px 8px 1px black;
-}
-/* The class of login-reg Main elements */
-.login-registration, .comic-forms{
-    padding: 1rem;
-    margin-top: 50px;
-}
-form {
-    padding: 1rem;
-    border: solid black 3px;
-}
-form.user-form {
-    padding: 1rem;
-    border: 6px solid black;
-    background-color: white;
-}
-input.user-form{
-    width: max-content;
-}
-input.comic-form{
-    width: auto !important;
-}
-.comic-form-update{
-    height: 500px;
-    overflow: scroll;
-}
-/* .dashboard{
-} */
 
 .super-login{
     background-image: url('../static/assets/login.jpg') !important;
     background-repeat: repeat;
     background-size: cover;
 }
+
+.login-reg-filter{
+    background-color: rgba(216, 214, 214, 0.4);
+    height: 55rem;
+}
+
 .super-register{
     /* animation: color-mirage 5s infinite;
     background-image: linear-gradient( 45deg, dodgerblue, white, crimson, grey, gold); */
@@ -122,6 +90,46 @@ input.comic-form{
     background-size: cover;
     background-position:center;
 }
+
+a{
+    text-decoration: none !important;
+}
+h1{
+    font-size: 35pt !important;
+}
+nav {
+    height: 100px;
+    background-image:linear-gradient(to right, gold, white, gold);
+    border: 5px solid black;
+    box-shadow: 8px 8px 1px black;
+}
+/* The class of login-reg Main elements */
+.login-registration, .comic-forms{
+    padding: 1rem;
+    margin-top: 50px;
+}
+form {
+    padding: 1rem;
+    border: solid black 3px;
+}
+form.user-form {
+    padding: 1rem;
+    border: 6px solid black;
+    background-color: white;
+}
+input.user-form{
+    width: max-content;
+}
+input.comic-form{
+    width: auto !important;
+}
+.comic-form-update{
+    height: 500px;
+    overflow: scroll;
+}
+/* .dashboard{
+} */
+
 .dashboard{
     margin-top: 150px;
 }
