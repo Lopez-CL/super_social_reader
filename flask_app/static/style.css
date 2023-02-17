@@ -56,7 +56,7 @@ body{
 }
 .super-background{
     background-image: url('../static/assets/realistic.png') !important;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
     /* background-position:; */
 }
@@ -74,9 +74,8 @@ body{
 }
 .add-comic{
     background-image: url('../static/assets/add_comic.jpg') !important;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position:center;
 }
 .edit-image{
     background-image: url('../static/assets/update.jpg') !important;
@@ -230,4 +229,16 @@ input.comic-form{
 
 .active-box{
     box-shadow: 2px 3px 2px 1px black;
+}
+
+.bi-patch-question-fill{
+    position: relative;
+    bottom: 15px;
+}
+
+.character-popup{
+    display: none;
+    height: 80px;
+    width: 80px;
+    position: fixed;
 }

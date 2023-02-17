@@ -6,8 +6,8 @@ import os
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-# Page Renders
 
+#Page Renders & Comics Retrieval
 @app.route('/dashboard')
 def render_dash():
     if 'user_id' not in session:
@@ -53,11 +53,15 @@ def render_update_comic_page(id):
         }
         return render_template('update_comic.html', this_comic = comic.Comic.grab_comic_by_id(data))
 
-
+@app.route('/characters')
+def render_character_call():
+    if 'user_id' not in session:
+        return redirect('/')
+    else:
+        return render_template('character.html')
 
 
 # CUD Logic
-
 @app.route('/create/comic', methods=['post'])
 def add_comic():
     if 'user_id' not in session:
@@ -127,3 +131,5 @@ def delete_comic(id):
         }
         comic.Comic.delete(data)
         return redirect('/dashboard')
+
+#API Methods
