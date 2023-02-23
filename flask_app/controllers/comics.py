@@ -1,6 +1,6 @@
 from flask_app import app
 from flask_app.models import comic, user, comment
-from flask import request, redirect, session, render_template
+from flask import request, redirect, session, render_template, jsonify
 from werkzeug.utils import secure_filename
 import os
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
