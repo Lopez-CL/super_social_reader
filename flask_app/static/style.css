@@ -238,7 +238,7 @@ input.comic-form{
 
 .character-popup{
     display: none;
-    height: 80px;
-    width: 80px;
+    /* height: 80px;
+    width: 80px; */
     position: fixed;
 }

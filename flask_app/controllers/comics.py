@@ -2,7 +2,7 @@ from flask_app import app
 from flask_app.models import comic, user, comment
 from flask import request, redirect, session, render_template, jsonify
 from werkzeug.utils import secure_filename
-import os
+import os, requests
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -133,3 +133,11 @@ def delete_comic(id):
         return redirect('/dashboard')
 
 #API Methods
+@app.route('/get/character', methods=['post'])
+def api_super_call():
+    if 'user_id' not in session:
+        return redirect('/')
+    else:
+        result = requests.get(f'https://superheroapi.com/api/{os.environ.get("FLASK_APP_API_KEY")}/get/character{request.form["character"]}')
+        print(result)
+        return jsonify(result.json())
