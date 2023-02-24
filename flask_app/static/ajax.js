@@ -8,14 +8,22 @@ const superAPI = e => {
         console.log(data) 
         data.error && console.log("Couldn't find by that name")
         if(data.results.length > 3){
-            console.log('Too many results matched your query. Try again')}
+            return console.log('Too many results matched your query. Try again')}
         const container = document.getElementById('character-container')
         container.innerHTML = "";
         for(let i = 0; i < data.results.length; i++){
-            let name = data.results[i].name
-            let info = document.createElement('p')
-            info.innerHTML = name
-            container.appendChild(info)
+            let cardInfo = document.createElement('div');
+            cardInfo.classList.add('card', 'bg-warning', 'me-5', 'text-dark', 'comics', 'details', 'border', 'border-border-dark', 'current-background');
+            cardInfo.style.width = "18rem"
+            let image = document.createElement('img');
+            image.classList.add('card-img-top');
+            image.src = data.results[i].image.url
+            let characterInfo = document.createElement('ul')
+            characterInfo.classList.add('list-group', 'list-group-flush' );
+            characterInfo.innerHTML =`<li class="list-group-item list-group-item-action">Name: ${data.results[i].name}</li>`
+            cardInfo.appendChild(image)
+            cardInfo.appendChild(characterInfo)
+            container.appendChild(cardInfo)
         }})
     .catch(err => console.log(err))
 }
