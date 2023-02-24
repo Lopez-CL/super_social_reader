@@ -43,7 +43,7 @@ body{
 
 .login-reg-filter{
     background-color: rgba(216, 214, 214, 0.4);
-    height: 55rem;
+    height: 60rem;
 }
 
 .super-register{
@@ -62,9 +62,8 @@ body{
 }
 .current-read{
     background-image: url('../static/assets/super_profile.jpeg') !important;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position:center;
 }
 .past-reads{
     background-image: url('../static/assets/past_reads_bg.jpg') !important;

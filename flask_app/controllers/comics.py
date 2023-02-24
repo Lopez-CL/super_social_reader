@@ -138,6 +138,6 @@ def api_super_call():
     if 'user_id' not in session:
         return redirect('/')
     else:
-        result = requests.get(f'https://superheroapi.com/api/{os.environ.get("FLASK_APP_API_KEY")}/get/character{request.form["character"]}')
+        result = requests.get(f'https://superheroapi.com/api/{os.environ.get("FLASK_APP_API_KEY")}/search/{request.form["character"]}')
         print(result)
         return jsonify(result.json())
