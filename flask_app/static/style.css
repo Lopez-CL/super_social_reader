@@ -57,13 +57,12 @@ body{
 .super-background{
     background-image: url('../static/assets/realistic.png') !important;
     background-repeat: repeat;
-    background-size: cover;
-    /* background-position:; */
+    /* background-size: cover; */
 }
 .current-read{
     background-image: url('../static/assets/super_profile.jpeg') !important;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:auto;
 }
 .past-reads{
     background-image: url('../static/assets/past_reads_bg.jpg') !important;
@@ -74,7 +73,7 @@ body{
 .add-comic{
     background-image: url('../static/assets/add_comic.jpg') !important;
     background-repeat: no-repeat;
-    background-size: cover;
+    /* background-size: cover; */
 }
 .edit-image{
     background-image: url('../static/assets/update.jpg') !important;
