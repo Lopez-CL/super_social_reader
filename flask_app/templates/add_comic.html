@@ -34,14 +34,14 @@
         {% endwith %}
         <form class="d-flex flex-column col-6 mx-auto comic-form align-items-between bg-light" action="/create/comic" method="post" enctype="multipart/form-data">
             <div>
-                <h2 class="text-center ms-4 py-2 d-inline-block">Your Next Comic!</h2>
+                <h2 class="text-center ms-4 py-2 d-inline-block px-2">Your Next Comic!</h2>
                 <span class=""><i class="bi bi-patch-question-fill"></i></span>
             </div>
-            <div class="character-popup border border-1 border-dark bg-warning">
-                <a class="text-end" href="/characters">Looking for a new character?</a>
-                <a class="btn-secondary close-popup" >Cancel</a>
+            <div class="character-popup px-1 border border-1 border-dark bg-warning">
+                <a class="text-end me-2" href="/characters">Looking for a new character?</a>
+                <a class="close-popup" >No</a>
             </div>
-            <div class=" mt-2">
+            <div class=" me-1">
                 <label class="form-label" for="title">Title</label>
                 <input class="form-control" name="title" id="title" type="text">
             </div>

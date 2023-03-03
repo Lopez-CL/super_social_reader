@@ -57,7 +57,7 @@ body{
 .super-background{
     background-image: url('../static/assets/realistic.png') !important;
     background-repeat: repeat;
-    /* background-size: cover; */
+    background-size: cover;
 }
 .current-read{
     background-image: url('../static/assets/super_profile.jpeg') !important;
@@ -236,7 +236,17 @@ input.comic-form{
 
 .character-popup{
     display: none;
-    /* height: 80px;
-    width: 80px; */
-    position: fixed;
+    margin: 0 auto;
+    height: 2rem;
+    width: fit-content;
+    position: relative;
+    box-shadow: 2px 2px 5px black !important;
+}
+.character-popup a{
+    color: black;
+    font-weight: bolder;
+    text-decoration: underline !important;
+}
+a.close-popup{
+    cursor: pointer;
 }
