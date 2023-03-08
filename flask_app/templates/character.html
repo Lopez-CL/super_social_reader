@@ -16,10 +16,11 @@
 </head>
 
 <body class="mx-auto col-8 current-read p-2">
-    <nav class="my-3 mx-auto col-8">
+    <nav class="my-3 mb-5 mx-auto col-8">
         <div class="text-end me-2 mx-auto col-8">
-            <a href="/dashboard">Dashboard</a>
-            <a href="/logout">Logout</a>
+            <a href="/dashboard">Dashboard</a> | 
+            <a href="/add/comic">Add Comic</a> | 
+            <a href="/logout">Logout</a> 
         </div>
 
         <div class="ms-2 text-center">
@@ -27,16 +28,23 @@
         </div>
     </nav>
     <main>
-        <div class="character-input">
-            <form class="d-flex align-items-center justify-content-start bg-warning" onsubmit="superAPI(event)" method="post" id="superAPIForm">
+        <div id="character-box" class="character-input bg-warning d-flex p-3 border border-3 border-dark">
+            <form class="d-flex align-items-center justify-content-start" onsubmit="superAPI(event)" method="post" id="superAPIForm">
                 <!-- icon will display popup, explaining how to use-->
                 <div>
-                    <label class="form-label" for="hero-select">Enter Superhero Name</label><span> <i
-                            class="bi bi-patch-question"></i></span>
+                    <label class="form-label" for="hero-select">Enter Superhero Name</label>
                     <input type="search" name="character" class="form-control" id="hero-select">
                 </div>
-                <input class="mt-4 mx-2" type="submit" value="Search">
+                <input id="character-btn" class=" mx-2 btn btn-primary" type="submit" value="Search">
             </form>
+            <div id="api-explain">
+                <ul>
+                    <li>Search <a href="https://superheroapi.com/index.html" target="_blank">SuperHeroAPI</a> by character name</li>
+                    <li>Results limited to SuperHeroAPI database. View <a href="https://superheroapi.com/ids.html" target="_blank">hero and villain data</a></li>
+                    <li>Results contain  <strong>image</strong> of character, the <strong>first issue</strong> a character appeared in, and <strong>publisher</strong></li>
+                <li>Start at character's literary origin or explore publisher info for more reading ideas!</li>
+                </ul>
+            </div>
         </div>
         <div id="character-container" class="d-flex flex-wrap justify-content-evenly me-5">
 

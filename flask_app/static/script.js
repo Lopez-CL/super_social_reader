@@ -37,10 +37,10 @@ $(document).ready(()=>{
         })
         $('.comment-characters').html(remaining);
     })
-    $('.bi-patch-question-fill').on('mouseover', () => {
-        $('.character-popup').show();
-        $('.close-popup').on('click', ()=>{
-            $('.character-popup').hide();
-        })
-    })
+    // $('#pop-up').on('mouseover', () => {
+    //     $('.character-popup').show();
+    //     $('#close-popup').on('click', ()=>{
+    //         $('.character-popup').hide();
+    //     })
+    // })
 })

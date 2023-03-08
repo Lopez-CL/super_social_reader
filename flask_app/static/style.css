@@ -105,7 +105,7 @@ nav {
     padding: 1rem;
     margin-top: 50px;
 }
-form {
+.book-form {
     padding: 1rem;
     border: solid black 3px;
 }
@@ -234,19 +234,18 @@ input.comic-form{
     bottom: 15px;
 }
 
-.character-popup{
-    display: none;
-    margin: 0 auto;
-    height: 2rem;
-    width: fit-content;
-    position: relative;
-    box-shadow: 2px 2px 5px black !important;
+#character-box{
+    border-radius: 10px;
 }
-.character-popup a{
+#character-btn{
+    height: fit-content !important;
+    margin-top: 29px !important;
+}
+/* .character-popup a{
     color: black;
     font-weight: bolder;
     text-decoration: underline !important;
 }
-a.close-popup{
+a#close-popup{
     cursor: pointer;
-}
+} */
