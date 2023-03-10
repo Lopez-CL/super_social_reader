@@ -12,12 +12,13 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
+
 <body class="mx-auto col-8 super-background">
 
     <nav class="my-5">
         <div class="text-end me-2">
-            <a href="/logout">Logout</a> | 
-            <a href="/upload/page">Edit Profile image</a>
+            <a href="/upload/page">Edit Profile image</a> |
+            <a href="/logout">Logout</a>
         </div>
 
         <div class="ms-2 text-center">
@@ -26,54 +27,62 @@
     </nav>
     <main class="d-flex justify-content-around ">
         <div class="reading-container  border border-dark border-3">
-            <h2 class="text-center readar-header text-dark border-bottom-1"><i class="bi bi-bullseye"></i> Reader Radar</h2>
+            <h2 class="text-center readar-header text-dark border-bottom-1"><i class="bi bi-bullseye"></i> Reader Radar
+            </h2>
             <div class="reading-list d-flex flex-column">
-                {% if all_comics | length == 0  %}
-                    <p>No Reading Activity Detected</p>
+                {% if all_comics | length == 0 %}
+                <p>No Reading Activity Detected</p>
                 {% else %}
                 {% for this_comic in all_comics %}
-                    {% if this_comic.user.id != this_user.id %}
-                        {% if this_comic.status == 'Reading' %}
-                        <div class="bg-warning box-action reader-area border border-3 border-dark my-2 p-1 text-wrap">
-                            {% if this_comic.user.file_name == None %}
-                                <img class="avatar-image radar-avatar mx-2" src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
-                            {% else %}
-                                <img class="avatar-image radar-avatar mx-2" src="../static/assets/user_images/{{this_comic.user.file_name}}" alt="user" srcset="">
-                            {% endif %}
-                            <p class="" ><a href="/user/{{this_comic.user.id}}/library">{{ this_comic.user.username }}</a> is currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
-                        </div>
-                        {% endif %}
+                {% if this_comic.user.id != this_user.id %}
+                {% if this_comic.status == 'Reading' %}
+                <div class="bg-warning box-action reader-area border border-3 border-dark my-2 p-1 text-wrap">
+                    {% if this_comic.user.file_name == None %}
+                    <img class="avatar-image radar-avatar mx-2" src="../static/assets/avatar-placeholder.png" alt="user"
+                        srcset="">
+                    {% else %}
+                    <img class="avatar-image radar-avatar mx-2"
+                        src="../static/assets/user_images/{{this_comic.user.file_name}}" alt="user" srcset="">
                     {% endif %}
+                    <p class=""><a href="/user/{{this_comic.user.id}}/library">{{ this_comic.user.username }}</a> is
+                        currently reading <a href="/comic/{{this_comic.id}}">{{this_comic.title}}</a></p>
+                </div>
+                {% endif %}
+                {% endif %}
                 {% endfor %}
                 {% endif %}
             </div>
         </div>
         <div class="user-info">
-                <div class="d-flex flex-column justify-content-start align-items-center current-user-comics p-1">
-                    <!-- I wonder if I could make background of this div a thought bubble? Avoid the arbitrary positioning? -->
-                    <div class="mt-5" id="bubble-content">
-                        {% if all_users_comics | length == 0 %}
-                            <p class="text-center mt-2"><strong>Not reading anything yet!</strong></p>
-                        {% else %}
-                            {% for this_user_comic in all_users_comics %}
-                            <p class="text-center text-wrap"><a  href="/comic/{{this_user_comic.id}}">{{this_user_comic.title}}</a></p>
-                            {% endfor %}
-                        {% endif %}
-                    </div>
+            <div class="d-flex flex-column justify-content-start align-items-center current-user-comics p-1">
+                <!-- I wonder if I could make background of this div a thought bubble? Avoid the arbitrary positioning? -->
+                <div class="mt-5" id="bubble-content">
+                    {% if all_users_comics | length == 0 %}
+                    <p class="text-center mt-2"><strong>Not reading anything yet!</strong></p>
+                    {% else %}
+                    {% for this_user_comic in all_users_comics %}
+                    <p class="text-center text-wrap"><a
+                            href="/comic/{{this_user_comic.id}}">{{this_user_comic.title}}</a></p>
+                    {% endfor %}
+                    {% endif %}
                 </div>
-                <div id="user-avatar-image">
+            </div>
+            <div id="user-avatar-image">
                 {% if this_user.file_name == None %}
-                <img class="avatar-image"  src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
+                <img class="avatar-image" src="../static/assets/avatar-placeholder.png" alt="user" srcset="">
                 {% else %}
-                <img class="avatar-image" id="user-avatar-image" src="../static/assets/user_images/{{this_user.file_name}}" alt="user" srcset="">
+                <img class="avatar-image" id="user-avatar-image"
+                    src="../static/assets/user_images/{{this_user.file_name}}" alt="user" srcset="">
                 {% endif %}
+            </div>
+            <div class=" d-flex reading-routes">
+                <div>
+                    <a title="Library" href="/user/{{this_user.id}}/library"><img class="route mx-3"
+                            src="../static/assets/past.png" alt="" srcset=""> </a>
+                    <a title="Add Comic" href="/add/comic"><img class="route" src="../static/assets/add_comic_icon.png"
+                            alt="" srcset=""></a>
                 </div>
-                <div class=" d-flex reading-routes">
-                    <div>
-                        <a title="Library" href="/user/{{this_user.id}}/library"><img class="route mx-3" src="../static/assets/past.png" alt="" srcset=""> </a>
-                        <a title="Add Comic" href="/add/comic"><img class="route" src="../static/assets/add_comic_icon.png" alt="" srcset=""></a>
-                    </div>
-                </div>
+            </div>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.3.js"

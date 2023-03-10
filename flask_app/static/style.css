@@ -88,8 +88,11 @@ body{
     background-position:center;
 }
 
-a{
+a:hover{
     text-decoration: none !important;
+}
+a:active{
+    color: darkblue !important;
 }
 h1{
     font-size: 35pt !important;
@@ -226,7 +229,9 @@ input.comic-form{
 }
 
 .active-box{
-    box-shadow: 2px 3px 2px 1px black;
+    box-shadow: 1px 4px 4px black;
+    transition: box-shadow .2s;
+    
 }
 
 .bi-patch-question-fill{
@@ -240,6 +245,44 @@ input.comic-form{
 #character-btn{
     height: fit-content !important;
     margin-top: 29px !important;
+}
+#search-hidden{
+    display: none;
+}
+#too-many-hidden{
+    display: none;
+}
+.search-error-box{
+    width: fit-content;
+    padding: 1%;
+}
+.search-error-no-results{
+    background-image:linear-gradient(to right, gold, white, gold) !important;
+    width: fit-content;
+    position: relative;
+    padding: 5px;
+    z-index: 1;
+    top: -75px;
+    left: 265px;
+    font-weight: bolder !important;
+    box-shadow: -2px 2px black;
+    font-weight: bolder;
+    font-size: 15pt;
+}
+.search-error-many{
+    background-image:linear-gradient(to right, gold, white, gold) !important;
+    width: fit-content;
+    position: relative;
+    padding: 5px;
+    z-index: 1;
+    top: -75px;
+    left: 300px;
+    font-weight: bolder !important;
+    box-shadow: -2px 2px black;
+}
+span.search-error {
+    font-weight: bolder;
+    font-size: 18pt;
 }
 /* .character-popup a{
     color: black;

@@ -1,16 +1,22 @@
 const superAPI = e => {
     e.preventDefault();
     let search = document.getElementById('superAPIForm');
-    let searchObject= new FormData(search)
+    let searchObject= new FormData(search);
     fetch("http://127.0.0.1:5000/get/character", {method: 'POST', body: searchObject})
     .then(res => res.json())
     .then(data =>{
         console.log(data) 
-        data.error && console.log("Couldn't find by that name")
-        if(data.results.length > 10){
-            return console.log('Too many results matched your query. Try again')}
-        const container = document.getElementById('character-container')
-        container.innerHTML = "";
+        // if(data.error){
+        //     let popUp =document.querySelector("#hidden")
+        //     popUp.id = '';
+        //     console.log("Couldn't find by that name")
+        // }
+            
+        
+        // if(data.results.length > 10){
+        //     return console.log('Too many results matched your query. Try again')}
+        // const container = document.getElementById('character-container')
+        // container.innerHTML = "";
         for(let i = 0; i < 5; i++){
             let cardInfo = document.createElement('div');
             cardInfo.classList.add('card', 'bg-warning', 'me-5', 'mt-4', 'text-dark', 'comics', 'details', 'border', 'border-2', 'border-dark', 'current-background');

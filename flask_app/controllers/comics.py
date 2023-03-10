@@ -138,6 +138,7 @@ def api_super_call():
     if 'user_id' not in session:
         return redirect('/')
     else:
+        print('attempting to fetch hero')
         result = requests.get(f'https://superheroapi.com/api/{os.environ.get("FLASK_APP_API_KEY")}/search/{request.form["character"]}')
         print(result)
         return jsonify(result.json())
