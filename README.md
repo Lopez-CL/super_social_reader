@@ -1,7 +1,14 @@
 # Super Social Reader
 **Description**
 
-A social reader tracker for superhero comic book readers to connect, discuss, and keep track of the comics they read.
+A social reader tracker for superhero comic book readers to connect, discuss, and keep track of the comics they read. View video (demo of app)[https://drive.google.com/file/d/1SumQ-Uel-pAWqaXZRLFvE2EYTPzcH7ep/view?usp=sharing]
+
+- Designed front-end with custom CSS and libraries ( jQuery & Bootstrap) to create dynamic, responsive modern web experience.
+- Employed werzeug library to handle secure image file uploads to personalize user profile and comic book cover art.
+- Optimized SQL query logic on the back-end to ensure responsive, customized user experience when viewing, rating, and creating comics.
+- Utilized many-to-many relationship in database to allow for commenting on specific comics.
+Leveraged the (superheroapi.com)[https://superheroapi.com/index.html] REST API to offer user suggestions on where to start reading for a character.
+
 
 ## Controller Routes
 ### Users
