@@ -50,12 +50,7 @@
                 </ul>
             </div>
         </div>
-        <div class="mx-auto col-6" id="search-hidden" >
-            <img class="search-error-box bg-light border border border-4 border-dark" src="{{ url_for('static', filename='/assets/proxy.jpeg') }}">
-            <div class="mx-auto">
-                <span class="search-error-no-results border border-4 border-dark">No results found. . .</span>
-            </div>
-            
+        <div class="mx-auto col-6 search-error">
         </div>
         <div id='too-many-hidden'class=" mx-auto col-10">
             <img class="search-error-box bg-light border border border-4 border-dark mx-auto" src="{{ url_for('static', filename='/assets/ms-marvel-stories.jpeg') }}">
@@ -65,7 +60,6 @@
 
         </div>
     </main>
-    </div>
     <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
