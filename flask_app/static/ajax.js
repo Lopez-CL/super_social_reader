@@ -3,6 +3,8 @@ const superAPI = e => {
     let search = document.getElementById('superAPIForm');
     let searchObject= new FormData(search);
     const container = document.getElementById('character-container')
+    let popUp = document.querySelector(".search-error")
+    popUp.innerHTML =""
     container.innerHTML = ""; 
     fetch("http://127.0.0.1:5000/get/character", {method: 'post', body: searchObject})
     // fetch("http://127.0.0.1:5000/get/character", {method: 'POST', body: searchObject})
@@ -10,13 +12,11 @@ const superAPI = e => {
     .then(data =>{
         console.log(data)
         if(data.error){
-            let popUp = document.querySelector(".search-error")
             popUp.innerHTML = '<img class="search-error-box bg-light border border border-4 border-dark" src="static/assets/proxy.jpeg"> \n <div class="mx-auto"> <span class="search-error-no-results border border-4 border-dark">No results found. . .</span> </div>'
             // popUp.classList toggle('#search-hidden')
             console.log("Couldn't find by that name")
         }
             
-        
         if(data.results.length > 10){
             return console.log('Too many results matched your query. Try again')}
         for(let i = 0; i < 5; i++){
