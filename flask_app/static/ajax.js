@@ -7,13 +7,11 @@ const superAPI = e => {
     popUp.innerHTML =""
     container.innerHTML = ""; 
     fetch("http://127.0.0.1:5000/get/character", {method: 'post', body: searchObject})
-    // fetch("http://127.0.0.1:5000/get/character", {method: 'POST', body: searchObject})
     .then(res => res.json())
     .then(data =>{
         console.log(data)
         if(data.error){
             popUp.innerHTML = '<img class="search-error-box bg-light border border border-4 border-dark" src="static/assets/proxy.jpeg"> \n <div class="mx-auto"> <span class="search-error-no-results border border-4 border-dark">No results found. . .</span> </div>'
-            // popUp.classList toggle('#search-hidden')
             console.log("Couldn't find by that name")
         }
             
@@ -26,6 +24,7 @@ const superAPI = e => {
             let image = document.createElement('img');
             image.classList.add('card-img-top');
             image.src = data.results[i].image.url
+            image.alt = `cover of the comic, ${data.results[i].biography["first-appearance"]}`
             let characterInfo = document.createElement('ul')
             characterInfo.classList.add('list-group', 'list-group-flush' );
             characterInfo.innerHTML =`<li class="list-group-item list-group-item-action">Name: ${data.results[i].name}/${data.results[i].biography["full-name"]}</li> \n
